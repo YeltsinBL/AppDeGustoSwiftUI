@@ -15,6 +15,7 @@ struct HomeView: View {
         ZStack {
             Color("Bg")
                 .ignoresSafeArea(edges: .all)
+            // Contenido principal
             ScrollView {
                 VStack (alignment: .leading){
                     // Menu y Usuario
@@ -66,7 +67,27 @@ struct HomeView: View {
                 }
             }
             
-            
+            // Diseño del Tab View
+            HStack {
+                BottomNavBarItem(image: Image(systemName: "house.fill")) {
+                    
+                }
+                BottomNavBarItem(image: Image(systemName: "map")) {
+                    
+                }
+                BottomNavBarItem(image: Image(systemName: "heart")) {
+                    
+                }
+                BottomNavBarItem(image: Image(systemName: "person")) {
+                    
+                }
+            }
+            .padding()
+            .background(.white)
+            .clipShape(Capsule())
+            .padding(.horizontal)
+            .shadow(color: .black.opacity(0.15), radius: 8, x: 2, y: 6)
+            .frame(maxHeight: .infinity, alignment: .bottom)
         }
     }
 }
@@ -86,7 +107,7 @@ struct AppBarView: View {
             }
             Spacer()
             Button(action: {}) {
-                Image(systemName: "person.fill")
+                Image(systemName: "cart.fill")
                     .resizable()
                     .tint(Color("Primary"))
                     .frame(width:42, height: 42)
@@ -171,5 +192,18 @@ struct BusinessView: View {
         .padding()
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+}
+
+struct BottomNavBarItem: View {
+    let image: Image
+    let action: () -> Void
+    var body: some View {
+        Button(action: {}, label: {
+            image
+                .scaledToFill()
+                .tint(Color("Primary"))
+                .frame(maxWidth: .infinity)
+        })
     }
 }
