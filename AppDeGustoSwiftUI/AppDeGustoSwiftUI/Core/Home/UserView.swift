@@ -8,8 +8,30 @@
 import SwiftUI
 
 struct UserView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            Section {
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Usuario")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.top,4)
+                        Text("Email")
+                            .font(.footnote)
+                            .tint(.gray)
+                    }
+                }
+            }
+            Section("Cuenta") {
+                Button(action: {
+                    print("Cerrar Sesión")
+                }, label: {
+                    Text("Cerrar Sesión")
+                })
+            }
+        }
     }
 }
 

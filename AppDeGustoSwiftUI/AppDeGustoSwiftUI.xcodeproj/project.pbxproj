@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B07BA3C2CAB1A7100B67327 /* UserView.swift */; };
+		3B07BA442CAB22D200B67327 /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA3E2CAB22D200B67327 /* IstokWeb-Bold.ttf */; };
+		3B07BA452CAB22D200B67327 /* IstokWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA3F2CAB22D200B67327 /* IstokWeb-BoldItalic.ttf */; };
+		3B07BA462CAB22D200B67327 /* IstokWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA402CAB22D200B67327 /* IstokWeb-Italic.ttf */; };
+		3B07BA472CAB22D200B67327 /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA412CAB22D200B67327 /* IstokWeb-Regular.ttf */; };
+		3B07BA482CAB22D200B67327 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA422CAB22D200B67327 /* OFL.txt */; };
 		3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */; };
 		3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CD2CA2696F0052280B /* ContentView.swift */; };
 		3B7CB0D02CA269710052280B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CF2CA269710052280B /* Assets.xcassets */; };
@@ -20,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B07BA3C2CAB1A7100B67327 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		3B07BA3E2CAB22D200B67327 /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
+		3B07BA3F2CAB22D200B67327 /* IstokWeb-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
+		3B07BA402CAB22D200B67327 /* IstokWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Italic.ttf"; sourceTree = "<group>"; };
+		3B07BA412CAB22D200B67327 /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
+		3B07BA422CAB22D200B67327 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		3B07BA492CAB23A100B67327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3B7CB0C82CA2696F0052280B /* AppDeGustoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDeGustoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeGustoSwiftUIApp.swift; sourceTree = "<group>"; };
 		3B7CB0CD2CA2696F0052280B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,9 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B07BA432CAB22D200B67327 /* Istok_Web */ = {
+			isa = PBXGroup;
+			children = (
+				3B07BA3E2CAB22D200B67327 /* IstokWeb-Bold.ttf */,
+				3B07BA3F2CAB22D200B67327 /* IstokWeb-BoldItalic.ttf */,
+				3B07BA402CAB22D200B67327 /* IstokWeb-Italic.ttf */,
+				3B07BA412CAB22D200B67327 /* IstokWeb-Regular.ttf */,
+				3B07BA422CAB22D200B67327 /* OFL.txt */,
+			);
+			path = Istok_Web;
+			sourceTree = "<group>";
+		};
 		3B7CB0BF2CA2696F0052280B = {
 			isa = PBXGroup;
 			children = (
+				3B07BA432CAB22D200B67327 /* Istok_Web */,
 				3B7CB0CA2CA2696F0052280B /* AppDeGustoSwiftUI */,
 				3B7CB0C92CA2696F0052280B /* Products */,
 			);
@@ -63,6 +89,7 @@
 		3B7CB0CA2CA2696F0052280B /* AppDeGustoSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				3B07BA492CAB23A100B67327 /* Info.plist */,
 				3B7CB0DD2CA26A010052280B /* App */,
 				3B7CB0DC2CA269FE0052280B /* Components */,
 				3B7CB0DB2CA269F80052280B /* Core */,
@@ -136,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				3B7CB0E62CA27D7A0052280B /* HomeView.swift */,
+				3B07BA3C2CAB1A7100B67327 /* UserView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -215,8 +243,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B07BA482CAB22D200B67327 /* OFL.txt in Resources */,
 				3B7CB0D32CA269710052280B /* Preview Assets.xcassets in Resources */,
+				3B07BA442CAB22D200B67327 /* IstokWeb-Bold.ttf in Resources */,
+				3B07BA462CAB22D200B67327 /* IstokWeb-Italic.ttf in Resources */,
+				3B07BA472CAB22D200B67327 /* IstokWeb-Regular.ttf in Resources */,
 				3B7CB0D02CA269710052280B /* Assets.xcassets in Resources */,
+				3B07BA452CAB22D200B67327 /* IstokWeb-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +267,7 @@
 				3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */,
 				3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */,
 				3B7CB0E52CA2792E0052280B /* RegistrationView.swift in Sources */,
+				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
 				3B7CB0E92CA27E310052280B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +404,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AppDeGustoSwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppDeGustoSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -398,6 +433,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AppDeGustoSwiftUI/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppDeGustoSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
