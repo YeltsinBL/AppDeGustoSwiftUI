@@ -13,6 +13,7 @@
 		3B07BA462CAB22D200B67327 /* IstokWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA402CAB22D200B67327 /* IstokWeb-Italic.ttf */; };
 		3B07BA472CAB22D200B67327 /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA412CAB22D200B67327 /* IstokWeb-Regular.ttf */; };
 		3B07BA482CAB22D200B67327 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA422CAB22D200B67327 /* OFL.txt */; };
+		3B07BA4B2CAB634600B67327 /* BusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B07BA4A2CAB634600B67327 /* BusinessView.swift */; };
 		3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */; };
 		3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CD2CA2696F0052280B /* ContentView.swift */; };
 		3B7CB0D02CA269710052280B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CF2CA269710052280B /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		3B07BA412CAB22D200B67327 /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
 		3B07BA422CAB22D200B67327 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		3B07BA492CAB23A100B67327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3B07BA4A2CAB634600B67327 /* BusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessView.swift; sourceTree = "<group>"; };
 		3B7CB0C82CA2696F0052280B /* AppDeGustoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDeGustoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeGustoSwiftUIApp.swift; sourceTree = "<group>"; };
 		3B7CB0CD2CA2696F0052280B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				3B7CB0E62CA27D7A0052280B /* HomeView.swift */,
+				3B07BA4A2CAB634600B67327 /* BusinessView.swift */,
 				3B07BA3C2CAB1A7100B67327 /* UserView.swift */,
 			);
 			path = Home;
@@ -266,6 +269,7 @@
 				3B7CB0E72CA27D7A0052280B /* HomeView.swift in Sources */,
 				3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */,
 				3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */,
+				3B07BA4B2CAB634600B67327 /* BusinessView.swift in Sources */,
 				3B7CB0E52CA2792E0052280B /* RegistrationView.swift in Sources */,
 				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
 				3B7CB0E92CA27E310052280B /* User.swift in Sources */,

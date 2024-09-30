@@ -44,7 +44,7 @@ struct HomeView: View {
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0 ..< 5) { item in
-                                BusinessView(image: Image("plato\(item+1)"), size: 210)
+                                CardBusinessView(image: Image("plato\(item+1)"), size: 210)
                             }
                             .padding(.trailing)
                         }
@@ -58,7 +58,7 @@ struct HomeView: View {
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0 ..< 5) { item in
-                                BusinessView(image: Image("plato\(item+1)"), size: 180)
+                                CardBusinessView(image: Image("plato\(item+1)"), size: 180)
                             }
                             .padding(.trailing)
                         }
@@ -166,7 +166,7 @@ struct CategoryView: View {
     }
 }
 
-struct BusinessView: View {
+struct CardBusinessView: View {
     let image: Image
     let size: CGFloat
     var body: some View {
