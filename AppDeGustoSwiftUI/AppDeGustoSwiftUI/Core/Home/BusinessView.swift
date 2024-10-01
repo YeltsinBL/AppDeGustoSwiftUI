@@ -9,21 +9,37 @@ import SwiftUI
 import Foundation
 
 struct BusinessView: View {
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
             ZStack {
                 Color("Bg")
                     .ignoresSafeArea(.all)
-                VStack {
+                ScrollView {
                     Image("plato1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .ignoresSafeArea(.all)
                     
                     DescriptionView()
                         .offset(y: -50)
                 }
+                .ignoresSafeArea(.all)
                 
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar{
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .tint(Color("Primary"))
+                            .padding(.all, 12)
+                            .background(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                }
             }
         }
     }
@@ -46,8 +62,8 @@ struct DescriptionView: View {
                 Text("(4.9)")
                     .opacity(0.5)
                     .padding(.leading, 8)
-                Spacer()
             }
+            .frame(maxWidth: .infinity)
         }
         .padding()
         .padding(.top)

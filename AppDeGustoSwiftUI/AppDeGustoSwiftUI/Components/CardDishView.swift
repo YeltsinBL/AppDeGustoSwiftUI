@@ -26,6 +26,7 @@ struct CardDishView: View {
                 Text(description)
                     .lineSpacing(8)
                     .opacity(0.4)
+                    .lineLimit(2)
                 Text("S/ \(price)")
                     .font(.subheadline)
                     .fontWeight(.bold)

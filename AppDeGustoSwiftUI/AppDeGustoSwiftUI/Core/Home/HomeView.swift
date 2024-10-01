@@ -12,82 +12,89 @@ struct HomeView: View {
     @State private var selectedIndex: Int = 0
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
     var body: some View {
-        ZStack {
-            Color("Bg")
-                .ignoresSafeArea(edges: .all)
-            // Contenido principal
-            ScrollView {
-                VStack (alignment: .leading){
-                    // Menu y Usuario
-                    AppBarView()
-                    // Texto
-                    TagLineView()
+        NavigationView {
+            ZStack {
+                Color("Bg")
+                    .ignoresSafeArea(edges: .all)
+                // Contenido principal
+                ScrollView {
+                    VStack (alignment: .leading){
+                        // Menu y Usuario
+                        AppBarView()
+                        // Texto
+                        TagLineView()
+                            .padding()
+                        //Buscar
+                        SearchView()
+                        // Tipos de Restaurantes
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(categories.indices, id: \.self) { item in
+                                    CategoryView(isActive: item == selectedIndex, text: categories[item])
+                                        .onTapGesture{
+                                            selectedIndex = item
+                                        }
+                                }
+                            }
+                        }
                         .padding()
-                    //Buscar
-                    SearchView()
-                    // Tipos de Restaurantes
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(categories.indices, id: \.self) { item in
-                                CategoryView(isActive: item == selectedIndex, text: categories[item])
-                                    .onTapGesture{
-                                        selectedIndex = item
-                                    }
+                        
+                        Text("Restaurantes")
+                            .font(.custom("IstokWeb-Bold", size: 24))
+                            .padding(.horizontal)
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0 ..< 5) { item in
+                                    NavigationLink(destination: BusinessView(), label: {
+                                        CardBusinessView(image: Image("plato\(item+1)"), size: 210)
+                                    })
+                                    .toolbar(Visibility.hidden)
+                                    .foregroundStyle(.black)
+                                    
+                                }
+                                .padding(.trailing)
                             }
+                            .padding(.leading)
                         }
-                    }
-                    .padding()
-                    
-                    Text("Restaurantes")
-                        .font(.custom("IstokWeb-Bold", size: 24))
-                        .padding(.horizontal)
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 5) { item in
-                                CardBusinessView(image: Image("plato\(item+1)"), size: 210)
+                        
+                        Text("Platos Recomendados")
+                            .font(.custom("IstokWeb-Bold", size: 24))
+                            .padding(.horizontal)
+                            .padding(.top)
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0 ..< 5) { item in
+                                    CardBusinessView(image: Image("plato\(item+1)"), size: 180)
+                                }
+                                .padding(.trailing)
                             }
-                            .padding(.trailing)
+                            .padding(.leading)
                         }
-                        .padding(.leading)
-                    }
-                    
-                    Text("Platos Recomendados")
-                        .font(.custom("IstokWeb-Bold", size: 24))
-                        .padding(.horizontal)
-                        .padding(.top)
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 5) { item in
-                                CardBusinessView(image: Image("plato\(item+1)"), size: 180)
-                            }
-                            .padding(.trailing)
-                        }
-                        .padding(.leading)
                     }
                 }
+                
+                // Diseño del Tab View
+                HStack {
+                    BottomNavBarItem(image: Image(systemName: "house.fill")) {
+                        
+                    }
+                    BottomNavBarItem(image: Image(systemName: "map")) {
+                        
+                    }
+                    BottomNavBarItem(image: Image(systemName: "heart")) {
+                        
+                    }
+                    BottomNavBarItem(image: Image(systemName: "person")) {
+                        
+                    }
+                }
+                .padding()
+                .background(.white)
+                .clipShape(Capsule())
+                .padding(.horizontal)
+                .shadow(color: .black.opacity(0.15), radius: 8, x: 2, y: 6)
+                .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            
-            // Diseño del Tab View
-            HStack {
-                BottomNavBarItem(image: Image(systemName: "house.fill")) {
-                    
-                }
-                BottomNavBarItem(image: Image(systemName: "map")) {
-                    
-                }
-                BottomNavBarItem(image: Image(systemName: "heart")) {
-                    
-                }
-                BottomNavBarItem(image: Image(systemName: "person")) {
-                    
-                }
-            }
-            .padding()
-            .background(.white)
-            .clipShape(Capsule())
-            .padding(.horizontal)
-            .shadow(color: .black.opacity(0.15), radius: 8, x: 2, y: 6)
-            .frame(maxHeight: .infinity, alignment: .bottom)
         }
     }
 }
@@ -199,7 +206,7 @@ struct BottomNavBarItem: View {
     let image: Image
     let action: () -> Void
     var body: some View {
-        Button(action: {}, label: {
+        Button(action: action, label: {
             image
                 .scaledToFill()
                 .tint(Color("Primary"))
