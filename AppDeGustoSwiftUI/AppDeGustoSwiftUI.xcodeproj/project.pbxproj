@@ -25,6 +25,7 @@
 		3B7CB0E72CA27D7A0052280B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0E62CA27D7A0052280B /* HomeView.swift */; };
 		3B7CB0E92CA27E310052280B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0E82CA27E310052280B /* User.swift */; };
 		3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */; };
+		3BACA2262CADA06D009F9316 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2252CADA06D009F9316 /* TabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		3B7CB0E62CA27D7A0052280B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3B7CB0E82CA27E310052280B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		3BACA2252CADA06D009F9316 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				3B7CB0DE2CA26A5E0052280B /* Authentication */,
 				3B7CB0DF2CA26A650052280B /* Home */,
+				3BACA2272CADBDBE009F9316 /* Navigation */,
 				3B7CB0D92CA269DF0052280B /* Root */,
 			);
 			path = Core;
@@ -189,6 +192,14 @@
 				3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3BACA2272CADBDBE009F9316 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				3BACA2252CADA06D009F9316 /* TabView.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				3B07BA4B2CAB634600B67327 /* BusinessView.swift in Sources */,
 				3B7CB0E52CA2792E0052280B /* RegistrationView.swift in Sources */,
 				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
+				3BACA2262CADA06D009F9316 /* TabView.swift in Sources */,
 				3B7CB0E92CA27E310052280B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
