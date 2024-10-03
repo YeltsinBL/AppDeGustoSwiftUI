@@ -114,7 +114,7 @@ struct DescriptionView: View {
         ScrollView (.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(0 ..< 5) { item in
-                    CardDishView(name: "Plato \(item + 1)", description: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato", image: Image("plato\(item+1)"), price: "30", size: 170)
+                    CardDishView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato", dishPrice: 20, dishPhoto: ""), size: 170)
                 }
                 .padding(.trailing)
             }

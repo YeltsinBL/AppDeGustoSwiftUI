@@ -9,8 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: AuthViewModel
-    @StateObject var viewModelDishCategory = DishViewModel()
+    @StateObject var viewModelDish = DishViewModel()
     @State private var selectedIndex: Int = 4
+//    @State private var categoryDishId:Int = 1
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
     var body: some View {
         NavigationView {
@@ -30,11 +31,14 @@ struct HomeView: View {
                         // Tipos de Restaurantes
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(viewModelDishCategory.dishCategory, id: \.id) {
+                                ForEach(viewModelDish.dishCategory, id: \.id) {
                                     dishCategory in
                                     CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
                                         .onTapGesture{
                                             selectedIndex = dishCategory.id - 1
+//                                            categoryDishId = dishCategory.id
+//                                            print(categoryDishId)
+                                            viewModelDish.getPopularDish(id: dishCategory.id)
                                         }
                                 }
                             }
@@ -67,8 +71,8 @@ struct HomeView: View {
                             .padding(.top)
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(0 ..< 5) { item in
-                                    CardBusinessView(image: Image("plato\(item+1)"), size: 180)
+                                ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
+                                    CardDishView(dish:dishPopular, size: 180)
                                 }
                                 .padding(.trailing)
                             }
@@ -81,14 +85,15 @@ struct HomeView: View {
 //                TabView()
             }
             .onAppear{
-                viewModelDishCategory.getAllDishCategory()
+                viewModelDish.getAllDishCategory()
+                viewModelDish.getPopularDish(id: selectedIndex+1)
             }
         }
     }
 }
 
 #Preview {
-    HomeView(viewModelDishCategory: .init())
+    HomeView(viewModelDish: .init())
 }
 
 struct AppBarView: View {

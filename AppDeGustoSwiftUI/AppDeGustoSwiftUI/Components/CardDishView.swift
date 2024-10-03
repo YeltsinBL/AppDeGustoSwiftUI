@@ -8,26 +8,23 @@
 import SwiftUI
 
 struct CardDishView: View {
-    let name: String
-    let description:String
-    let image: Image
-    let price: String
+    let dish:Dish
     let size: CGFloat
     var body: some View {
         VStack (alignment: .leading){
-            image
+            Image("plato1")
                 .resizable()
                 .frame(width: size, height: 200 * (size/210))
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-            Text(name)
+            Text(dish.dishName)
                 .font(.title3)
 //                .fontWeight(.bold)
             VStack(alignment: .leading,spacing: 2) {
-                Text(description)
+                Text(dish.dishDescription)
                     .lineSpacing(8)
                     .opacity(0.4)
                     .lineLimit(2)
-                Text("S/ \(price)")
+                Text("S/ \(dish.dishPrice, specifier: "%.2f")")
                     .font(.subheadline)
                     .fontWeight(.bold)
 //                    .padding(.leading)
@@ -42,5 +39,5 @@ struct CardDishView: View {
 }
 
 #Preview {
-    CardDishView(name:"Conchitas Parmesanas",description: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato",image: Image("plato1"), price: "25.0", size: 180)
+    CardDishView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato", dishPrice: 20, dishPhoto: ""), size: 180)
 }
