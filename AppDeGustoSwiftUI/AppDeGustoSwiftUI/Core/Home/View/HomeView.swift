@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: AuthViewModel
-    @State private var selectedIndex: Int = 0
+    @StateObject var viewModelDishCategory = DishViewModel()
+    @State private var selectedIndex: Int = 4
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
     var body: some View {
         NavigationView {
@@ -29,15 +30,18 @@ struct HomeView: View {
                         // Tipos de Restaurantes
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(categories.indices, id: \.self) { item in
-                                    CategoryView(isActive: item == selectedIndex, text: categories[item])
+                                ForEach(viewModelDishCategory.dishCategory, id: \.id) {
+                                    dishCategory in
+                                    CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
                                         .onTapGesture{
-                                            selectedIndex = item
+                                            selectedIndex = dishCategory.id - 1
                                         }
                                 }
                             }
                         }
-                        .padding()
+                        .padding(.top)
+                        .padding(.leading)
+                        .padding(.bottom)
                         
                         Text("Restaurantes")
                             .font(.custom("IstokWeb-Bold", size: 24))
@@ -76,12 +80,15 @@ struct HomeView: View {
                 // Diseño del Tab View
 //                TabView()
             }
+            .onAppear{
+                viewModelDishCategory.getAllDishCategory()
+            }
         }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModelDishCategory: .init())
 }
 
 struct AppBarView: View {
