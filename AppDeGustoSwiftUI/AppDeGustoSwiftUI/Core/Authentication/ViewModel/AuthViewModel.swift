@@ -30,10 +30,8 @@ class AuthViewModel: ObservableObject {
     /// - Returns: Datos de la sesion o nulo
     func validationSession() async -> ValidationSession? {
         
-        let businessareas = "user/validateSession"
-        
         // Validar si la URL es correcta
-        guard let url = URL(string: AuthViewModel.URLAPI + businessareas) else {
+        guard let url = URL(string: AuthViewModel.URLAPI + PathURL.ValidateSessionPath.rawValue) else {
             print( APIError.invalidURL)
             return nil
         }

@@ -13,8 +13,7 @@ class DishViewModel: ObservableObject {
     /// Lista de los Tipos de Categoria de los Platos
     func getAllDishCategory() {
         Task {
-            let dishesCategories = PathURL.DishCategoryPath
-            let url = URL(string: AuthViewModel.URLAPI + dishesCategories.rawValue)!
+            let url = URL(string: AuthViewModel.URLAPI + PathURL.DishCategoryPath.rawValue)!
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let decoder = JSONDecoder()
