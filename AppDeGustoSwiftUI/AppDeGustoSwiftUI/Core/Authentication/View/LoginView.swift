@@ -40,7 +40,8 @@ struct LoginView: View {
                     
                         Button {
                             Task {
-                                try await viewModel.signIn(withUserName: email, password: password)
+//                                try await viewModel.signIn(withUserName: email, password: password)
+                                try await viewModel.validationSession()
                             }
                         } label: {
                             HStack {
