@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @StateObject var viewModelDish = DishViewModel()
+    @StateObject var viewModelBusiness = BusinessViewModel()
     @State private var selectedIndex: Int = 4
 //    @State private var categoryDishId:Int = 1
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
@@ -36,8 +37,6 @@ struct HomeView: View {
                                     CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
                                         .onTapGesture{
                                             selectedIndex = dishCategory.id - 1
-//                                            categoryDishId = dishCategory.id
-//                                            print(categoryDishId)
                                             viewModelDish.getPopularDish(id: dishCategory.id)
                                         }
                                 }
@@ -52,9 +51,9 @@ struct HomeView: View {
                             .padding(.horizontal)
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(0 ..< 5) { item in
+                                ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
                                     NavigationLink(destination: BusinessView(), label: {
-                                        CardBusinessView(image: Image("plato\(item+1)"), size: 210)
+                                        CardBusinessView(business: businessPopular, size: 210)
                                     })
                                     .toolbar(Visibility.hidden)
                                     .foregroundStyle(.black)
@@ -87,13 +86,14 @@ struct HomeView: View {
             .onAppear{
                 viewModelDish.getAllDishCategory()
                 viewModelDish.getPopularDish(id: selectedIndex+1)
+                viewModelBusiness.getBusinessPopular()
             }
         }
     }
 }
 
 #Preview {
-    HomeView(viewModelDish: .init())
+    HomeView(viewModelDish: .init(), viewModelBusiness: .init())
 }
 
 struct AppBarView: View {
@@ -166,31 +166,3 @@ struct CategoryView: View {
     }
 }
 
-struct CardBusinessView: View {
-    let image: Image
-    let size: CGFloat
-    var body: some View {
-        VStack {
-            image
-                .resizable()
-                .frame(width: size, height: 200 * (size/210))
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-            Text("Al Dente")
-                .font(.title3)
-                .fontWeight(.bold)
-            HStack(spacing: 2) {
-                ForEach(0..<5) { item in
-                    Image("star")
-                }
-                Spacer()
-                Text("$25")
-                    .font(.title3)
-                    .fontWeight(.bold)
-            }
-        }
-        .frame(width: size)
-        .padding()
-        .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
-}
