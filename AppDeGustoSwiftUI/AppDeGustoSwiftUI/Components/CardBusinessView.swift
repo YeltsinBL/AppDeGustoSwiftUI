@@ -23,9 +23,7 @@ struct CardBusinessView: View {
             HStack(spacing: 2) {
                 CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
                 Spacer()
-                Image(systemName: "mappin").fontWeight(.bold).foregroundStyle(.blue)
-                Text(business.businessDistance)
-                    .font(.system(size: 18))
+                CardDistanceLocation(businessDistance: business.businessDistance)
             }
         }
         .frame(width: size)

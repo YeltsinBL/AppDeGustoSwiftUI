@@ -51,7 +51,7 @@ struct BusinessView: View {
                             .scaledToFill()
                             .frame(alignment: .top)
                             .frame(height: 95)  // Altura que quieres darle a la imagen
-                            .blur(radius: 10)   // Aplica el desenfoque
+                            .blur(radius: 5)   // Aplica el desenfoque
                             .clipped()
                             .frame(maxWidth: .infinity)
                             .transition(.opacity)  // Animación de aparición/desaparición
@@ -101,17 +101,9 @@ struct DescriptionView: View {
                 .fontWeight(.bold)
             HStack (spacing: 4) {
                 CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
+                Spacer()
+                CardDistanceLocation(businessDistance: business.businessDistance)
             }
-            
-//            HStack (spacing: 4) {
-//                ForEach(0 ..< 5) { item in
-//                    Image("star")
-//                }
-//                Text("(4.9)")
-//                    .opacity(0.5)
-//                    .padding(.leading, 8)
-//            }
-//            .frame(maxWidth: .infinity)
         }
         .padding()
         .padding(.top)
@@ -122,7 +114,7 @@ struct DescriptionView: View {
             .font(.custom("IstokWeb-Bold", size: 24))
             .padding(.horizontal)
             .padding(.top)
-        ScrollView (.horizontal, showsIndicators: false) {
+        ScrollView (.vertical, showsIndicators: false) {
             HStack {
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(dish, id: \.id) { item in
@@ -133,6 +125,6 @@ struct DescriptionView: View {
             }
         }
         .padding(.leading)
-        .padding(.trailing)
+//        .padding(.trailing)
     }
 }
