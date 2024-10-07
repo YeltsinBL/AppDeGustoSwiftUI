@@ -12,10 +12,18 @@ struct CardDishView: View {
     let size: CGFloat
     var body: some View {
         VStack (alignment: .leading){
-            Image("plato1")
-                .resizable()
-                .frame(width: size, height: 200 * (size/210))
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+            
+            VStack{
+                if(dish.dishPhoto.hasPrefix("https")){
+                    AsyncImage(url: URL(string: "\(dish.dishPhoto)"))
+                } else {
+                    Image("plato1")
+                        .resizable()
+                }
+            }
+            .frame(width: size, height: 200 * (size/210))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            
             Text(dish.dishName)
                 .font(.title3)
 //                .fontWeight(.bold)
@@ -39,5 +47,5 @@ struct CardDishView: View {
 }
 
 #Preview {
-    CardDishView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato", dishPrice: 20, dishPhoto: ""), size: 180)
+    CardDishView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato", dishPrice: 20, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/c_auto,g_auto,h_172,w_180/plato2.png"), size: 180)
 }

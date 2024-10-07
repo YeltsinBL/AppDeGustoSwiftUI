@@ -35,7 +35,21 @@ class DishViewModel: ObservableObject {
             do{
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let results = try decoder.decode([Dish].self, from: data)
-                dishPopular = results
+                for var dish in results{
+                    if (dish.dishPhoto.hasPrefix("https")){
+                        var components = dish.dishPhoto.components(separatedBy: "/")
+                        if components.count > 1 {
+                            // asignar un tamaño a la imagen de los platos sin perder el foco central
+                            components[components.count - 2] = "c_auto,g_auto,h_172,w_180"
+                            // Reconstruir la cadena
+                            let newPath = components.joined(separator: "/")
+                            dish.dishPhoto = newPath
+                        }
+                    }
+                    dishPopular.append(dish)
+                }
+//                dishPopular = results
+                print(dishPopular)
             } catch {
                 print("Solicitud rechazada")
             }

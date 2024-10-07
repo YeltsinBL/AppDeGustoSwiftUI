@@ -12,7 +12,7 @@ struct Dish: Identifiable, Decodable{
     let dishName:String
     let dishDescription:String
     let dishPrice:Double
-    let dishPhoto: String
+    var dishPhoto: String
     // Hacer que 'userId' sea el identificador
     var id: Int {
         return dishId
