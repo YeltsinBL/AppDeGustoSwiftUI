@@ -11,6 +11,8 @@ import Foundation
 struct BusinessView: View {
     @Environment(\.dismiss) var dismiss
     @State private var hasScrolled = false  // Controla si se ha hecho scroll o no
+    @StateObject var viewModelDish = DishViewModel()
+    let business: Business
     var body: some View {
         VStack {
             ZStack {
@@ -37,7 +39,7 @@ struct BusinessView: View {
                         .aspectRatio(contentMode: .fit)
                         .offset(y:-10)
                     
-                    DescriptionView()
+                    DescriptionView(business: business, dish: viewModelDish.dishByBusiness)
                         .offset(y: -50)
                 }
                 .ignoresSafeArea(.all)
@@ -61,7 +63,7 @@ struct BusinessView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
-            .navigationTitle(hasScrolled ? "Restaurante" : "")
+            .navigationTitle(hasScrolled ? business.businessName : "")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 
@@ -78,18 +80,23 @@ struct BusinessView: View {
                 }
             }
             .toolbarBackground(.hidden)
+            .onAppear {
+                viewModelDish.getDishByBusiness(id: business.id)
+            }
         }
     }
 }
 
 #Preview {
-    BusinessView()
+    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "restaurant_logo.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m "))
 }
 
 struct DescriptionView: View {
+    let business:Business
+    let dish:[Dish]
     var body: some View {
         VStack (alignment: .center) {
-            Text("Restaurante 1")
+            Text(business.businessName)
                 .font(.title)
                 .fontWeight(.bold)
             HStack (spacing: 4) {
@@ -113,10 +120,12 @@ struct DescriptionView: View {
             .padding(.top)
         ScrollView (.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(0 ..< 5) { item in
-                    CardDishView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Descripcion de todos los platos para visualizarlo cuando se esta en el restaurante y el propio plato", dishPrice: 20, dishPhoto: ""), size: 170)
+                LazyVGrid(columns: [GridItem(), GridItem()]) {
+                    ForEach(dish, id: \.id) { item in
+                        CardDishView(dish: item, size: 165)
+                    }
+                    .padding(.trailing)
                 }
-                .padding(.trailing)
             }
         }
         .padding(.leading)

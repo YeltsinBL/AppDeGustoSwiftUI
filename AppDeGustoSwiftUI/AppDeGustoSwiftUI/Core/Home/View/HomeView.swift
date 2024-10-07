@@ -52,7 +52,7 @@ struct HomeView: View {
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
-                                    NavigationLink(destination: BusinessView(), label: {
+                                    NavigationLink(destination: BusinessView(business:businessPopular), label: {
                                         CardBusinessView(business: businessPopular, size: 210)
                                     })
                                     .toolbar(Visibility.hidden)

@@ -18,6 +18,7 @@ enum URLPath {
     case dishPath
     case dishCategoryPath
     case dishPopular
+    case dishByBusiness
     case business
     case businessPopular
     
@@ -35,6 +36,8 @@ enum URLPath {
             return "\(baseURL)dish/dishCategory"
         case .dishPopular:
             return "\(URLPath.dishPath.url)/popular"
+        case .dishByBusiness:
+            return "\(URLPath.dishPath.url)/business"
         case .business:
             return "\(baseURL)business"
         case .businessPopular:
