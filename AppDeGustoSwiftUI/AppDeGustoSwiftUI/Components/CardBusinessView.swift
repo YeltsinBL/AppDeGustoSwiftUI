@@ -21,13 +21,7 @@ struct CardBusinessView: View {
                 .font(.title3)
                 .fontWeight(.bold)
             HStack(spacing: 2) {
-                    HStack {
-                        Image(systemName: "star.fill").foregroundStyle(business.businessAverageRating >= 4.5 ? .yellow : .gray)
-                        Text("\(business.businessAverageRating, specifier: "%.1f")").fontWeight(.bold)
-                    }.padding(5).background(business.businessAverageRating >= 4.5 ? .yellow.opacity(0.2) : .gray.opacity(0.2)).clipShape(RoundedRectangle(cornerRadius: 50))
-                Text("(\(business.businessTotalReviews))").fontWeight(.light).foregroundStyle(.gray).padding(.bottom, 2)
-                
-                
+                CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
                 Spacer()
                 Image(systemName: "mappin").fontWeight(.bold).foregroundStyle(.blue)
                 Text(business.businessDistance)

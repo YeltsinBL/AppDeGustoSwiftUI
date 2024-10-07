@@ -29,6 +29,7 @@
 		3B7CB0E72CA27D7A0052280B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0E62CA27D7A0052280B /* HomeView.swift */; };
 		3B7CB0E92CA27E310052280B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0E82CA27E310052280B /* User.swift */; };
 		3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */; };
+		3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E32CB3CDA500DC10D9 /* CardRating.swift */; };
 		3BACA2262CADA06D009F9316 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2252CADA06D009F9316 /* TabView.swift */; };
 		3BACA2292CAE051B009F9316 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2282CAE051B009F9316 /* Login.swift */; };
 		3BACA22B2CAE0AFF009F9316 /* BusinessAreas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA22A2CAE0AFE009F9316 /* BusinessAreas.swift */; };
@@ -64,6 +65,7 @@
 		3B7CB0E62CA27D7A0052280B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3B7CB0E82CA27E310052280B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		3BA903E32CB3CDA500DC10D9 /* CardRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRating.swift; sourceTree = "<group>"; };
 		3BACA2252CADA06D009F9316 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		3BACA2282CAE051B009F9316 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		3BACA22A2CAE0AFE009F9316 /* BusinessAreas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessAreas.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				3B7CB0E22CA26D050052280B /* InputView.swift */,
 				3B07BA4C2CAB6CFB00B67327 /* CardDishView.swift */,
 				3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */,
+				3BA903E32CB3CDA500DC10D9 /* CardRating.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				3B7CB0E52CA2792E0052280B /* RegistrationView.swift in Sources */,
 				3BACA2372CAE5C91009F9316 /* Path.swift in Sources */,
 				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
+				3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */,
 				3B69A6132CAFC1E1005525E3 /* CardBusinessView.swift in Sources */,
 				3BACA22F2CAE21F3009F9316 /* APIError.swift in Sources */,
 				3B69A6112CAF832A005525E3 /* Business.swift in Sources */,

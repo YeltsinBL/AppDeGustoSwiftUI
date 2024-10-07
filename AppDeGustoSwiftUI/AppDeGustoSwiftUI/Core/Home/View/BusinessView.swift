@@ -100,14 +100,18 @@ struct DescriptionView: View {
                 .font(.title)
                 .fontWeight(.bold)
             HStack (spacing: 4) {
-                ForEach(0 ..< 5) { item in
-                    Image("star")
-                }
-                Text("(4.9)")
-                    .opacity(0.5)
-                    .padding(.leading, 8)
+                CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
             }
-            .frame(maxWidth: .infinity)
+            
+//            HStack (spacing: 4) {
+//                ForEach(0 ..< 5) { item in
+//                    Image("star")
+//                }
+//                Text("(4.9)")
+//                    .opacity(0.5)
+//                    .padding(.leading, 8)
+//            }
+//            .frame(maxWidth: .infinity)
         }
         .padding()
         .padding(.top)
