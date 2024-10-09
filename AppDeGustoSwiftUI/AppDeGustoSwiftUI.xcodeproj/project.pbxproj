@@ -30,6 +30,7 @@
 		3B7CB0E92CA27E310052280B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0E82CA27E310052280B /* User.swift */; };
 		3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */; };
 		3BA5D4F72CB6F5770067190B /* CardCategorizationDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */; };
+		3BA5D4F92CB72AF90067190B /* ToolBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */; };
 		3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E32CB3CDA500DC10D9 /* CardRating.swift */; };
 		3BA903E62CB3D15500DC10D9 /* CardDistanceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */; };
 		3BACA2262CADA06D009F9316 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2252CADA06D009F9316 /* TabView.swift */; };
@@ -68,6 +69,7 @@
 		3B7CB0E82CA27E310052280B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategorizationDish.swift; sourceTree = "<group>"; };
+		3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarItemView.swift; sourceTree = "<group>"; };
 		3BA903E32CB3CDA500DC10D9 /* CardRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRating.swift; sourceTree = "<group>"; };
 		3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDistanceLocation.swift; sourceTree = "<group>"; };
 		3BACA2252CADA06D009F9316 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				3B7CB0E22CA26D050052280B /* InputView.swift */,
 				3B07BA4C2CAB6CFB00B67327 /* CardDishView.swift */,
+				3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */,
 				3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */,
 				3BA903E32CB3CDA500DC10D9 /* CardRating.swift */,
 				3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */,
@@ -343,6 +346,7 @@
 				3B07BA4D2CAB6CFB00B67327 /* CardDishView.swift in Sources */,
 				3B69A60F2CAF82F6005525E3 /* BusinessViewModel.swift in Sources */,
 				3BACA2292CAE051B009F9316 /* Login.swift in Sources */,
+				3BA5D4F92CB72AF90067190B /* ToolBarItemView.swift in Sources */,
 				3B7CB0E32CA26D050052280B /* InputView.swift in Sources */,
 				3BACA22D2CAE1654009F9316 /* ValidationSession.swift in Sources */,
 				3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */,

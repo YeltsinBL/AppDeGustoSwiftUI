@@ -51,7 +51,9 @@ struct BusinessView: View {
                             .scaledToFill()
                             .frame(alignment: .top)
                             .frame(height: 95)  // Altura que quieres darle a la imagen
-                            .blur(radius: 5)   // Aplica el desenfoque
+                            .background(.black)
+                            .opacity(1)
+                            .blur(radius: 50, opaque: true)   // Aplica el desenfoque
                             .clipped()
                             .frame(maxWidth: .infinity)
                             .transition(.opacity)  // Animación de aparición/desaparición
@@ -63,7 +65,7 @@ struct BusinessView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
-            .navigationTitle(hasScrolled ? business.businessName : "")
+//            .navigationTitle(hasScrolled ? business.businessName : "")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 
@@ -71,11 +73,7 @@ struct BusinessView: View {
                     Button(action: {
                         dismiss()
                     }) {
-                        Image(systemName: "chevron.backward")
-                            .tint(Color("Primary"))
-                            .padding(.all, 8)
-                            .background(.white)
-                            .clipShape(Circle())
+                        ToolBarItemView(name: hasScrolled ? business.businessName : "", color: .white)
                     }
                 }
             }
@@ -131,7 +129,11 @@ struct DescriptionView: View {
             HStack {
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(dish, id: \.id) { item in
-                        CardDishView(dish: item, size: 165)
+                        NavigationLink(destination: {}) {
+                            CardDishView(dish: item, size: 165)
+                        }
+                        .foregroundStyle(.black)
+                        
                     }
                     .padding(.trailing)
                 }
