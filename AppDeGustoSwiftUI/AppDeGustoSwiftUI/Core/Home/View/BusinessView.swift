@@ -100,13 +100,26 @@ struct DescriptionView: View {
                 .font(.title)
                 .fontWeight(.bold)
             HStack (spacing: 4) {
-                CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
+                VStack {
+                    Text("Calificación").foregroundStyle(.gray).font(.system(size: 15))
+                    CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
+                }
                 Spacer()
-                CardDistanceLocation(businessDistance: business.businessDistance)
+                VStack {
+                    Text("Categorización").foregroundStyle(.gray).font(.system(size: 15))
+                    CardCategorizationDish(nroCategorization: 3)
+                }
+                Spacer()
+                VStack {
+                    Text("Distancia").foregroundStyle(.gray).font(.system(size: 15))
+                    CardDistanceLocation(businessDistance: business.businessDistance,size: 14)
+                }
             }
+            .padding(8)
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(.gray.opacity(0.3), lineWidth: 1))
         }
         .padding()
-        .padding(.top)
+//        .padding(.top)
         .background(Color("Bg"))
         .clipShape(RoundedRectangle(cornerRadius: 40))
         

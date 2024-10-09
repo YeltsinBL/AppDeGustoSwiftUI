@@ -23,7 +23,7 @@ struct CardBusinessView: View {
             HStack(spacing: 2) {
                 CardRating(businessAverageRating: business.businessAverageRating, businessTotalReviews: business.businessTotalReviews)
                 Spacer()
-                CardDistanceLocation(businessDistance: business.businessDistance)
+                CardDistanceLocation(businessDistance: business.businessDistance, size: 15)
             }
         }
         .frame(width: size)
