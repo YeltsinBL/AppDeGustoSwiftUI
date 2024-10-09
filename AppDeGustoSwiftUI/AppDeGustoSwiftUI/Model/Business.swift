@@ -16,6 +16,7 @@ struct Business: Identifiable, Decodable {
     let businessLogo: String
     let businessLatitude: Float
     let businessLongitude: Float
+    let businessCategorization:Int
     let businessAverageRating: Float
     let businessTotalReviews: Int
     let businessDistance: String

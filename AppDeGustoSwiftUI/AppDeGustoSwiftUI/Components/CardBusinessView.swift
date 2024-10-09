@@ -35,5 +35,5 @@ struct CardBusinessView: View {
 
 
 #Preview {
-    CardBusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "restaurant_logo.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m "), size: 210)
+    CardBusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "restaurant_logo.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m "), size: 210)
 }
