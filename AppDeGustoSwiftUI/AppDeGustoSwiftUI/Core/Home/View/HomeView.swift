@@ -11,6 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @StateObject var viewModelDish = DishViewModel()
     @StateObject var viewModelBusiness = BusinessViewModel()
+    @StateObject var cartManager = CartManager()
     @State private var selectedIndex: Int = 4
 //    @State private var categoryDishId:Int = 1
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
@@ -23,7 +24,7 @@ struct HomeView: View {
                 ScrollView {
                     VStack (alignment: .leading){
                         // Menu y Usuario
-                        AppBarView()
+                        AppBarView().environmentObject(cartManager)
                         // Texto
                         TagLineView()
                             .padding()
@@ -52,7 +53,7 @@ struct HomeView: View {
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
-                                    NavigationLink(destination: BusinessView(business:businessPopular), label: {
+                                    NavigationLink(destination: BusinessView(business:businessPopular).environmentObject(cartManager), label: {
                                         CardBusinessView(business: businessPopular, size: 210)
                                     })
                                     .toolbar(Visibility.hidden)
@@ -97,6 +98,7 @@ struct HomeView: View {
 }
 
 struct AppBarView: View {
+    @EnvironmentObject var cartManager: CartManager
     var body: some View {
         HStack {
             Button(action: {}) {
@@ -106,14 +108,11 @@ struct AppBarView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             Spacer()
-            Button(action: {}) {
-                Image(systemName: "cart.fill")
-                    .resizable()
-                    .tint(Color("Primary"))
-                    .frame(width:42, height: 42)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-            }
+            NavigationLink(destination:
+                            CartView().environmentObject(cartManager)
+            , label: {
+                CartButton(numberOfDishes: cartManager.dishes.count)
+            })
         }
         .padding(.horizontal)
     }

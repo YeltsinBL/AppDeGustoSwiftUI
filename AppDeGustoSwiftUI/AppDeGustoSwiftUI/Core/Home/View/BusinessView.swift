@@ -10,6 +10,7 @@ import Foundation
 
 struct BusinessView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var cartManager:CartManager
     @State private var hasScrolled = false  // Controla si se ha hecho scroll o no
     @StateObject var viewModelDish = DishViewModel()
     let business: Business
@@ -40,7 +41,7 @@ struct BusinessView: View {
                         .offset(y:-10)
                     
                     DescriptionView(business: business, dish: viewModelDish.dishByBusiness)
-                        .offset(y: -50)
+                        .offset(y: -50).environmentObject(cartManager)
                 }
                 .ignoresSafeArea(.all)
                 // Imagen difuminada en la barra de navegación cuando se hace scroll
@@ -86,10 +87,11 @@ struct BusinessView: View {
 }
 
 #Preview {
-    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "restaurant_logo.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m "))
+    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "restaurant_logo.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
 }
 
 struct DescriptionView: View {
+    @EnvironmentObject var cartManager:CartManager
     let business:Business
     let dish:[Dish]
     var body: some View {
@@ -129,7 +131,7 @@ struct DescriptionView: View {
             HStack {
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(dish, id: \.id) { item in
-                        NavigationLink(destination: {}) {
+                        NavigationLink(destination: DishView(dish: item).environmentObject(cartManager)) {
                             CardDishView(dish: item, size: 165)
                         }
                         .foregroundStyle(.black)

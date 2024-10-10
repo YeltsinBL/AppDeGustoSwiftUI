@@ -65,21 +65,7 @@ class DishViewModel: ObservableObject {
             do{
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let results = try decoder.decode([Dish].self, from: data)
-                let updatedResults = results.map { dish -> Dish in
-                    var updatedDish = dish
-                    if updatedDish.dishPhoto.hasPrefix("https") {
-                        var components = updatedDish.dishPhoto.components(separatedBy: "/")
-                        if components.count > 1 {
-                            // Reemplaza el penúltimo componente
-                            components[components.count - 2] = "c_auto,g_auto,h_172,w_180"
-                            // Reconstruir la cadena
-                            let newPath = components.joined(separator: "/")
-                            updatedDish.dishPhoto = newPath.lowercased()
-                        }
-                    }
-                    return updatedDish
-                }
-                dishByBusiness = updatedResults
+                dishByBusiness = results
                 print(dishByBusiness)
             } catch {
                 print("Solicitud rechazada")
