@@ -129,7 +129,7 @@ struct DescriptionView: View {
             HStack {
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(dish, id: \.id) { item in
-                        NavigationLink(destination: {}) {
+                        NavigationLink(destination: DishView(dish: item)) {
                             CardDishView(dish: item, size: 165)
                         }
                         .foregroundStyle(.black)

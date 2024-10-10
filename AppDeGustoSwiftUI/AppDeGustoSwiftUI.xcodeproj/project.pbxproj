@@ -31,6 +31,12 @@
 		3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */; };
 		3BA5D4F72CB6F5770067190B /* CardCategorizationDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */; };
 		3BA5D4F92CB72AF90067190B /* ToolBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */; };
+		3BA5D4FB2CB731260067190B /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4FA2CB731260067190B /* DishView.swift */; };
+		3BA5D4FD2CB742710067190B /* ContainerDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4FC2CB742710067190B /* ContainerDescriptionView.swift */; };
+		3BA5D4FF2CB7799F0067190B /* AddOnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4FE2CB7799F0067190B /* AddOnsView.swift */; };
+		3BA5D5012CB79E620067190B /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D5002CB79E620067190B /* TextFormatter.swift */; };
+		3BA5D5032CB7A3220067190B /* ButtonAddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D5022CB7A3220067190B /* ButtonAddProductView.swift */; };
+		3BA5D5052CB7A33F0067190B /* ButtonAddToCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D5042CB7A33F0067190B /* ButtonAddToCarView.swift */; };
 		3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E32CB3CDA500DC10D9 /* CardRating.swift */; };
 		3BA903E62CB3D15500DC10D9 /* CardDistanceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */; };
 		3BACA2262CADA06D009F9316 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2252CADA06D009F9316 /* TabView.swift */; };
@@ -70,6 +76,12 @@
 		3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategorizationDish.swift; sourceTree = "<group>"; };
 		3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarItemView.swift; sourceTree = "<group>"; };
+		3BA5D4FA2CB731260067190B /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
+		3BA5D4FC2CB742710067190B /* ContainerDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerDescriptionView.swift; sourceTree = "<group>"; };
+		3BA5D4FE2CB7799F0067190B /* AddOnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsView.swift; sourceTree = "<group>"; };
+		3BA5D5002CB79E620067190B /* TextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
+		3BA5D5022CB7A3220067190B /* ButtonAddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddProductView.swift; sourceTree = "<group>"; };
+		3BA5D5042CB7A33F0067190B /* ButtonAddToCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddToCarView.swift; sourceTree = "<group>"; };
 		3BA903E32CB3CDA500DC10D9 /* CardRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRating.swift; sourceTree = "<group>"; };
 		3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDistanceLocation.swift; sourceTree = "<group>"; };
 		3BACA2252CADA06D009F9316 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -164,6 +176,7 @@
 				3BACA2362CAE5C91009F9316 /* Path.swift */,
 				3B69A60C2CAF547A005525E3 /* Dish.swift */,
 				3B69A6102CAF832A005525E3 /* Business.swift */,
+				3BA5D5002CB79E620067190B /* TextFormatter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +202,9 @@
 				3BA903E32CB3CDA500DC10D9 /* CardRating.swift */,
 				3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */,
 				3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */,
+				3BA5D4FC2CB742710067190B /* ContainerDescriptionView.swift */,
+				3BA5D5022CB7A3220067190B /* ButtonAddProductView.swift */,
+				3BA5D5042CB7A33F0067190B /* ButtonAddToCarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -258,7 +274,9 @@
 			children = (
 				3B7CB0E62CA27D7A0052280B /* HomeView.swift */,
 				3B07BA4A2CAB634600B67327 /* BusinessView.swift */,
+				3BA5D4FA2CB731260067190B /* DishView.swift */,
 				3B07BA3C2CAB1A7100B67327 /* UserView.swift */,
+				3BA5D4FE2CB7799F0067190B /* AddOnsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,20 +361,26 @@
 				3B69A60D2CAF547A005525E3 /* Dish.swift in Sources */,
 				3B7CB0E12CA26AA70052280B /* LoginView.swift in Sources */,
 				3BA903E62CB3D15500DC10D9 /* CardDistanceLocation.swift in Sources */,
+				3BA5D4FD2CB742710067190B /* ContainerDescriptionView.swift in Sources */,
 				3B07BA4D2CAB6CFB00B67327 /* CardDishView.swift in Sources */,
 				3B69A60F2CAF82F6005525E3 /* BusinessViewModel.swift in Sources */,
 				3BACA2292CAE051B009F9316 /* Login.swift in Sources */,
+				3BA5D4FF2CB7799F0067190B /* AddOnsView.swift in Sources */,
 				3BA5D4F92CB72AF90067190B /* ToolBarItemView.swift in Sources */,
 				3B7CB0E32CA26D050052280B /* InputView.swift in Sources */,
 				3BACA22D2CAE1654009F9316 /* ValidationSession.swift in Sources */,
 				3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */,
+				3BA5D4FB2CB731260067190B /* DishView.swift in Sources */,
 				3BACA2352CAE57CA009F9316 /* DishCategory.swift in Sources */,
 				3B7CB0E72CA27D7A0052280B /* HomeView.swift in Sources */,
 				3BACA22B2CAE0AFF009F9316 /* BusinessAreas.swift in Sources */,
 				3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */,
+				3BA5D5012CB79E620067190B /* TextFormatter.swift in Sources */,
+				3BA5D5052CB7A33F0067190B /* ButtonAddToCarView.swift in Sources */,
 				3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */,
 				3B07BA4B2CAB634600B67327 /* BusinessView.swift in Sources */,
 				3B7CB0E52CA2792E0052280B /* RegistrationView.swift in Sources */,
+				3BA5D5032CB7A3220067190B /* ButtonAddProductView.swift in Sources */,
 				3BACA2372CAE5C91009F9316 /* Path.swift in Sources */,
 				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
 				3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */,
