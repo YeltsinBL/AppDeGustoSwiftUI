@@ -11,6 +11,7 @@ struct CardProductRow: View {
     @EnvironmentObject var cartManager:CartManager
     var dish: Dish
     let textFormatter = TextFormatter()
+    @State var valor=1
     var body: some View {
         HStack(spacing:10) {
             Image("plato1")
@@ -23,7 +24,7 @@ struct CardProductRow: View {
                     Text("\(textFormatter.priceFormatter(Float(dish.dishPrice)))")
                 HStack {
                     Spacer()
-                    ButtonAddProduct(block: true,valor: 1, espacio:10, espaciog: 0, isProductRow: true, icon: "trash", dish: dish).environmentObject(cartManager)
+                    ButtonAddProduct(block: true,valor: $valor, espacio:10, espaciog: 0, isProductRow: true, icon: "trash", dish: dish).environmentObject(cartManager)
                 }
             }
         }

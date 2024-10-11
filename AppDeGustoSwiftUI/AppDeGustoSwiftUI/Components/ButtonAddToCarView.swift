@@ -12,12 +12,12 @@ struct ButtonAddToCarView: View {
     let text = TextFormatter()
     let dish:Dish
     let total: Float
-    @State var valor=1
+    @Binding var valor:Int
     var body: some View {
         VStack {
             Spacer()
             HStack {
-                ButtonAddProduct(block: true,valor: 1, espacio:10, espaciog: 5).environmentObject(cartManager)
+                ButtonAddProduct(block: true,valor: $valor, espacio:10, espaciog: 5).environmentObject(cartManager)
 //                Spacer()
                 Button("Agregar \(text.priceFormatter(total))") {
                     cartManager.add(dish)
@@ -31,11 +31,11 @@ struct ButtonAddToCarView: View {
                 RoundedRectangle(cornerRadius: 26, style: .continuous)
                     .stroke(.linearGradient(colors: [.white.opacity(0.5),.white.opacity(0)], startPoint: .topLeading, endPoint: .bottomTrailing))
             )
-            .offset(y:10)
         }
     }
 }
 
 #Preview {
-    ButtonAddToCarView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Conchitas de abanico, queso crema, banado con gotas de limon, 6pz.", dishPrice: 25.0, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/c_crop,g_auto,h_550,w_800/test/Tallar%C3%ADn%20con%20pollo%2061.jpg"), total: 80.2).environmentObject(CartManager())
+    @State var number: Int = 1
+    ButtonAddToCarView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Conchitas de abanico, queso crema, banado con gotas de limon, 6pz.", dishPrice: 25.0, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/c_crop,g_auto,h_550,w_800/test/Tallar%C3%ADn%20con%20pollo%2061.jpg"), total: 80.2, valor: $number).environmentObject(CartManager())
 }

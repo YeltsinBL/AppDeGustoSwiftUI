@@ -13,6 +13,8 @@ struct DishView: View {
     @State private var hasScrolled = false  // Controla si se ha hecho scroll o no
     let dish: Dish
     let textFormatter = TextFormatter()
+    @State var valor = 1
+    @State var valorComplementary:Float = 0
     var body: some View {
         ZStack {
             Color("Bg")
@@ -42,7 +44,7 @@ struct DishView: View {
                                 },
                                placeholder: { ProgressView() }
                     )
-                    .frame(width: .infinity)
+                    .frame(width: .infinity, height: 345)
                     .aspectRatio(contentMode: .fit)
                     .offset(y:-10)
                 } else {
@@ -66,7 +68,7 @@ struct DishView: View {
                         }.padding()
                         Spacer()
                     })
-                    AddOnsView()
+                    AddOnsView(total: $valorComplementary)
                 }.offset(y:-70)
             }
             .ignoresSafeArea(.all)
@@ -90,7 +92,8 @@ struct DishView: View {
                 }.ignoresSafeArea()
                     
             }
-            ButtonAddToCarView(dish: dish, total: 80.50)
+            ButtonAddToCarView(dish: dish, total: Float(dish.dishPrice * Double(valor)) +
+                               valorComplementary, valor: $valor)
                 .offset(y: -24)
                 .background(
                     LinearGradient(colors: [.gray.opacity(0), .gray], startPoint: .top, endPoint: .bottom)

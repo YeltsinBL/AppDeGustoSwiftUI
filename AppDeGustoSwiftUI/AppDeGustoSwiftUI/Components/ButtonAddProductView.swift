@@ -10,7 +10,7 @@ import SwiftUI
 struct ButtonAddProduct: View {
     @EnvironmentObject var cartManager:CartManager
     @State var block=false
-    @State var valor=0
+    @Binding var valor:Int
     @State var espacio:CGFloat = 10
     @State var espaciog:CGFloat = 0
     @State var isProductRow = false
@@ -56,5 +56,7 @@ struct ButtonAddProduct: View {
 }
 
 #Preview {
-    ButtonAddProduct().environmentObject(CartManager())
+    @State var number : Int = 0
+    ButtonAddProduct(
+        valor: $number).environmentObject(CartManager())
 }
