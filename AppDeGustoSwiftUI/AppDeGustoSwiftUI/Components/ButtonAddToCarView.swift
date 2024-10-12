@@ -10,9 +10,9 @@ import SwiftUI
 struct ButtonAddToCarView: View {
     @EnvironmentObject var cartManager:CartManager
     let text = TextFormatter()
-    let dish:Dish
+    @Binding var dish:Dish
     let total: Float
-    @Binding var valor:Int
+    @Binding var valor:Int?
     var body: some View {
         VStack {
             Spacer()
@@ -20,6 +20,7 @@ struct ButtonAddToCarView: View {
                 ButtonAddProduct(block: true,valor: $valor, espacio:10, espaciog: 5).environmentObject(cartManager)
 //                Spacer()
                 Button("Agregar \(text.priceFormatter(total))") {
+                    dish.quantity = valor
                     cartManager.add(dish)
                 }.frame(width:160).padding().bold().background(Color("Primary")).foregroundStyle(.white).clipShape(RoundedRectangle(cornerRadius: 20))
                 
@@ -36,6 +37,7 @@ struct ButtonAddToCarView: View {
 }
 
 #Preview {
-    @State var number: Int = 1
-    ButtonAddToCarView(dish: Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Conchitas de abanico, queso crema, banado con gotas de limon, 6pz.", dishPrice: 25.0, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/c_crop,g_auto,h_550,w_800/test/Tallar%C3%ADn%20con%20pollo%2061.jpg"), total: 80.2, valor: $number).environmentObject(CartManager())
+    @State var dish: Dish = Dish(dishId: 1, dishName: "Conchitas Parmesanas", dishDescription: "Conchitas de abanico, queso crema, banado con gotas de limon, 6pz.", dishPrice: 25.0, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/c_crop,g_auto,h_550,w_800/test/Tallar%C3%ADn%20con%20pollo%2061.jpg")
+    @State var number: Int? = 1
+    ButtonAddToCarView(dish: $dish, total: 80.2, valor: $number).environmentObject(CartManager())
 }

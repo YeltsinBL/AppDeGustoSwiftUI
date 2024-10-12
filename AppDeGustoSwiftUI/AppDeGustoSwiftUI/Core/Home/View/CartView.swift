@@ -16,8 +16,8 @@ struct CartView: View {
                 .ignoresSafeArea(edges: .all)
             ScrollView {
                         if cartManager.dishes.count > 0 {
-                            ForEach(cartManager.dishes, id:\.id) { dish in
-                                CardProductRow(dish: dish).environmentObject(cartManager)
+                            ForEach($cartManager.dishes, id:\.id) { $dish in
+                                CardProductRow(dish: dish, valor: $dish.quantity).environmentObject(cartManager)
                                 Rectangle().frame(width: .infinity, height: 1).padding(.leading).padding(.trailing).foregroundStyle(.gray.opacity(0.2))
                             }
                             HStack {
@@ -46,7 +46,6 @@ struct CartView: View {
             //        .toolbarBackground(.hidden)
                     .padding(.top)
         }
-        
     }
 }
 

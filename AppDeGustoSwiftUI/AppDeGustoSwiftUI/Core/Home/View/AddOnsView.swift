@@ -87,7 +87,7 @@ struct AddOnsView: View {
     }
     // Función para calcular el total
     func calculateTotal() -> Float {
-        return dishes.reduce(0) { $0 + (Float($1.quantity) * Float($1.dishPrice)) }
+        return dishes.reduce(0) { $0 + (Float($1.quantity!) * Float($1.dishPrice)) }
     }
 }
 

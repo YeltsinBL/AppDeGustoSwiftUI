@@ -11,9 +11,9 @@ struct DishView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cartManager:CartManager
     @State private var hasScrolled = false  // Controla si se ha hecho scroll o no
-    let dish: Dish
+    @State var dish: Dish
     let textFormatter = TextFormatter()
-    @State var valor = 1
+    @State var valor:Int? = 1
     @State var valorComplementary:Float = 0
     var body: some View {
         ZStack {
@@ -92,7 +92,7 @@ struct DishView: View {
                 }.ignoresSafeArea()
                     
             }
-            ButtonAddToCarView(dish: dish, total: Float(dish.dishPrice * Double(valor)) +
+            ButtonAddToCarView(dish: $dish, total: Float(dish.dishPrice * Double(valor!)) +
                                valorComplementary, valor: $valor)
                 .offset(y: -24)
                 .background(

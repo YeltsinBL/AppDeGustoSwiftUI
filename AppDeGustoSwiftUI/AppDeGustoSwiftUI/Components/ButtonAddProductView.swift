@@ -10,7 +10,7 @@ import SwiftUI
 struct ButtonAddProduct: View {
     @EnvironmentObject var cartManager:CartManager
     @State var block=false
-    @Binding var valor:Int
+    @Binding var valor:Int?
     @State var espacio:CGFloat = 10
     @State var espaciog:CGFloat = 0
     @State var isProductRow = false
@@ -19,26 +19,29 @@ struct ButtonAddProduct: View {
     var body: some View {
         HStack {
             
-            if(valor > 0) {
+            if(valor! > 0) {
                 Button("", systemImage: icon) {
                     if(block && valor == 1){
                         valor = 1
-                        if(isProductRow) {
-                            cartManager.remove(dish!)
-                        }
                     }else {
-                        valor -= 1
+                        valor! -= 1
                         if(isProductRow && valor == 1){
                             icon = "trash"
                         }
                     }
+                    if(isProductRow) {
+                        cartManager.remove(dish!)
+                    }
                 }
-                Text("\(valor)").padding(.leading,espaciog).padding(.trailing,espaciog)
+                Text("\(valor!)").padding(.leading,espaciog).padding(.trailing,espaciog)
             }
             Button("", systemImage: "plus") {
-                valor += 1
-                if(valor > 1){
+                valor! += 1
+                if(valor! > 1){
                     icon = "minus"
+                }
+                if isProductRow {
+                    cartManager.add(dish!, 0)
                 }
             }
         }.bold()
@@ -56,7 +59,7 @@ struct ButtonAddProduct: View {
 }
 
 #Preview {
-    @State var number : Int = 0
+    @State var number : Int? = 1
     ButtonAddProduct(
         valor: $number).environmentObject(CartManager())
 }
