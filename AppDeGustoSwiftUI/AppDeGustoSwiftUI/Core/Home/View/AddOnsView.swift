@@ -46,7 +46,7 @@ struct AddOnsView: View {
                     .padding()
                     .cornerRadius(10)
                 }
-            Rectangle().frame(width: .infinity, height:1)
+            Rectangle().frame(height:1)
                 .padding(.leading).padding(.trailing)
                     
             // La lista de elementos que se muestra solo si está expandido
@@ -64,6 +64,7 @@ struct AddOnsView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text("+ \(textFormatter.priceFormatter(Float(category.dishPrice)) )").font(.headline).bold()
                         }
+                        .foregroundStyle(.black)
                             Spacer()
                         ButtonAddProduct(valor: $category.quantity, espacio: 5).environmentObject(cartManager)
                     }
@@ -78,7 +79,7 @@ struct AddOnsView: View {
                         total = calculateTotal()
                     }
                     Rectangle()
-                        .frame(width: .infinity, height: 1)
+                        .frame(height: 1)
                         .padding(.leading).padding(.trailing)
                 }
             }

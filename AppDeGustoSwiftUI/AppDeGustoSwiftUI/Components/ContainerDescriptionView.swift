@@ -14,7 +14,6 @@ struct ContainerDescriptionView<Content: View>: View {
             content
         }
         .background(Color("Bg"))
-        .frame(width: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 40))
     }
 }

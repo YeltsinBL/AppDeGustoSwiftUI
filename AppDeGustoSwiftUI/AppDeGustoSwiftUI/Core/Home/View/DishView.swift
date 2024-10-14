@@ -44,7 +44,7 @@ struct DishView: View {
                                 },
                                placeholder: { ProgressView() }
                     )
-                    .frame(width: .infinity, height: 345)
+                    .frame(height: 345)
                     .aspectRatio(contentMode: .fit)
                     .offset(y:-10)
                 } else {
@@ -65,7 +65,7 @@ struct DishView: View {
                             Text("S/\(dish.dishPrice, specifier: "%.2f")")
                                 .fontWeight(.bold)
                                 .font(.system(size: CGFloat(18)))
-                        }.padding()
+                        }.padding().foregroundStyle(.black)
                         Spacer()
                     })
                     AddOnsView(total: $valorComplementary)

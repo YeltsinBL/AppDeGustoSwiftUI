@@ -10,12 +10,13 @@ import SwiftUI
 struct CardDishView: View {
     let dish:Dish
     let size: CGFloat
+    let textFormatter = TextFormatter()
     var body: some View {
         VStack (alignment: .leading){
             
             VStack{
                 if(dish.dishPhoto.hasPrefix("https")){
-                    AsyncImage(url: URL(string: "\(dish.dishPhoto)"))
+                    AsyncImage(url: URL(string: "\(textFormatter.urlFormatter(dish.dishPhoto,1))"))
                 } else {
                     Image("plato1")
                         .resizable()

@@ -13,7 +13,7 @@ struct CardDistanceLocation: View {
     var body: some View {
         HStack(spacing: 2) {
             Image(systemName: "mappin").fontWeight(.bold).foregroundStyle(.blue)
-            Text(businessDistance).fontWeight(.bold)
+            Text(businessDistance).foregroundStyle(.black).fontWeight(.bold)
                 .font(.system(size: CGFloat(size)))
         }.padding(5)
     }

@@ -40,7 +40,7 @@ struct BusinessView: View {
                         .aspectRatio(contentMode: .fit)
                         .offset(y:-10)
                     
-                    DescriptionView(business: business, dish: viewModelDish.dishByBusiness)
+                    DescriptionView(business: business, dish: [])
                         .offset(y: -50).environmentObject(cartManager)
                 }
                 .ignoresSafeArea(.all)
@@ -98,6 +98,7 @@ struct DescriptionView: View {
         VStack (alignment: .center) {
             Text(business.businessName)
                 .font(.title)
+                .foregroundStyle(.black)
                 .fontWeight(.bold)
             HStack (spacing: 4) {
                 VStack {
@@ -125,19 +126,32 @@ struct DescriptionView: View {
         
         Text("Platos Recomendados")
             .font(.custom("IstokWeb-Bold", size: 24))
+            .foregroundStyle(.black)
             .padding(.horizontal)
             .padding(.top)
         ScrollView (.vertical, showsIndicators: false) {
             HStack {
-                LazyVGrid(columns: [GridItem(), GridItem()]) {
-                    ForEach(dish, id: \.id) { item in
-                        NavigationLink(destination: DishView(dish: item).environmentObject(cartManager)) {
-                            CardDishView(dish: item, size: 165)
+                if(!dish.isEmpty) {
+                    LazyVGrid(columns: [GridItem(), GridItem()]) {
+                        ForEach(dish, id: \.id) { item in
+                            NavigationLink(destination: DishView(dish: item).environmentObject(cartManager)) {
+                                CardDishView(dish: item, size: 165)
+                            }
+                            .foregroundStyle(.black)
+                            
                         }
-                        .foregroundStyle(.black)
-                        
+                        .padding(.trailing)
                     }
-                    .padding(.trailing)
+                }
+                else {
+                    VStack(spacing: 2) {
+                        Image(systemName: "cart.badge.minus").padding(.horizontal)
+                            .frame(width:42, height: 42)
+                        Text("Aun no se han registrado platos para este restaurante")
+                            .lineLimit(5)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(8)
+                    }.padding().foregroundStyle(.black).bold()
                 }
             }
         }
