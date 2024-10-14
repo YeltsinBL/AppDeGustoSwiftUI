@@ -31,22 +31,25 @@ struct HomeView: View {
                         //Buscar
                         SearchView()
                         // Tipos de Restaurantes
-                        ScrollView (.horizontal, showsIndicators: false) {
+//                        ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(viewModelDish.dishCategory, id: \.id) {
-                                    dishCategory in
-                                    CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
-                                        .onTapGesture{
-                                            selectedIndex = dishCategory.id - 1
-                                            viewModelDish.getPopularDish(id: dishCategory.id)
-                                        }
-                                }
                                 
-                            }
-                        }
-                        .padding(.top)
-                        .padding(.leading)
-                        .padding(.bottom)
+                                LazyVGrid(columns: [GridItem(), GridItem()]) {
+                                    ForEach(viewModelDish.dishCategory, id: \.id) {
+                                        dishCategory in
+                                        CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
+                                            .padding(.vertical,3)
+                                            .onTapGesture{
+                                                selectedIndex = dishCategory.id - 1
+                                                viewModelDish.getPopularDish(id: dishCategory.id)
+                                            }
+                                    }
+                                }
+                            }.padding()
+//                        }
+//                        .padding(.top)
+//                        .padding(.leading)
+//                        .padding(.bottom)
                         
                         VStack {
                             Text("Restaurantes ")
@@ -70,19 +73,20 @@ struct HomeView: View {
                             .padding(.leading)
                         }
                         
-//                        Text("Platos Recomendados")
-//                            .font(.custom("IstokWeb-Bold", size: 24))
-//                            .padding(.horizontal)
-//                            .padding(.top)
-//                        ScrollView (.horizontal, showsIndicators: false) {
-//                            HStack {
-//                                ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
-//                                    CardDishView(dish:dishPopular, size: 180)
-//                                }
-//                                .padding(.trailing)
-//                            }
-//                            .padding(.leading)
-//                        }
+                        Text("Platos Recomendados")
+                            .font(.custom("IstokWeb-Bold", size: 24))
+                            .foregroundStyle(Color("Primary"))
+                            .padding(.horizontal)
+                            .padding(.top)
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
+                                    CardDishView(dish:dishPopular, size: 180)
+                                }
+                                .padding(.trailing)
+                            }
+                            .padding(.leading)
+                        }
                     }
                 }
                 

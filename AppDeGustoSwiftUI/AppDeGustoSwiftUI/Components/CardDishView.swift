@@ -27,6 +27,7 @@ struct CardDishView: View {
             
             Text(dish.dishName)
                 .font(.title3)
+                .foregroundStyle(.black)
 //                .fontWeight(.bold)
             VStack(alignment: .leading,spacing: 2) {
                 Text(dish.dishDescription)
@@ -38,6 +39,7 @@ struct CardDishView: View {
                     .fontWeight(.bold)
 //                    .padding(.leading)
             }
+            .foregroundStyle(.black)
 //            .frame(maxWidth: .infinity)
         }
         .frame(width: size)

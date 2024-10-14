@@ -13,6 +13,7 @@ struct BusinessView: View {
     @EnvironmentObject var cartManager:CartManager
     @State private var hasScrolled = false  // Controla si se ha hecho scroll o no
     @StateObject var viewModelDish = DishViewModel()
+    let textFormatter = TextFormatter()
     let business: Business
     var body: some View {
         VStack {
@@ -35,33 +36,32 @@ struct BusinessView: View {
                         }
                 }
                 .frame(height: 0)  // Necesitamos el GeometryReader pero no queremos que ocupe espacio
-                    Image("plato1")
-                        .resizable()
+                    if(business.businessLogo.hasPrefix("https")){
+                        AsyncImage(url: URL(string: "\(textFormatter.urlFormatter(business.businessLogo,2))"),
+                                   content: { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .offset(y:-10)
+                                    },
+                                   placeholder: { ProgressView() }
+                        )
                         .aspectRatio(contentMode: .fit)
                         .offset(y:-10)
+                    } else {
+                        Image("plato1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .offset(y:-10)
+                    }
                     
-                    DescriptionView(business: business, dish: [])
+                    
+                    DescriptionView(business: business, dish: viewModelDish.dishByBusiness)
                         .offset(y: -50).environmentObject(cartManager)
                 }
                 .ignoresSafeArea(.all)
                 // Imagen difuminada en la barra de navegación cuando se hace scroll
                 if hasScrolled {
-                    VStack {
-                        Image("plato1")  // Reemplaza con el nombre de tu imagen
-                            .resizable()
-                            .scaledToFill()
-                            .frame(alignment: .top)
-                            .frame(height: 95)  // Altura que quieres darle a la imagen
-                            .background(.black)
-                            .opacity(1)
-                            .blur(radius: 50, opaque: true)   // Aplica el desenfoque
-                            .clipped()
-                            .frame(maxWidth: .infinity)
-                            .transition(.opacity)  // Animación de aparición/desaparición
-                        .animation(.easeInOut, value: hasScrolled)// Animación suave al mostrar la imagen
-                        
-                        Spacer()
-                    }.ignoresSafeArea()
+                    CardImageDifusa(image: business.businessLogo, hasScrolled: hasScrolled)
                         
                 }
             }
@@ -87,7 +87,7 @@ struct BusinessView: View {
 }
 
 #Preview {
-    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "restaurant_logo.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
+    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
 }
 
 struct DescriptionView: View {

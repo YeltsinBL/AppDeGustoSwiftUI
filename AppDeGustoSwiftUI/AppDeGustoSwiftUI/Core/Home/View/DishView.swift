@@ -48,7 +48,7 @@ struct DishView: View {
                     .aspectRatio(contentMode: .fit)
                     .offset(y:-10)
                 } else {
-                    Image(dish.dishPhoto)
+                    Image("plato1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .offset(y:-10)
@@ -74,23 +74,7 @@ struct DishView: View {
             .ignoresSafeArea(.all)
             // Imagen difuminada en la barra de navegación cuando se hace scroll
             if hasScrolled {
-                VStack {
-                    Image("plato1")  // Reemplaza con el nombre de tu imagen
-                        .resizable()
-                        .scaledToFill()
-                        .frame(alignment: .top)
-                        .frame(height: 95)  // Altura que quieres darle a la imagen
-                        .background(.black)
-                        .opacity(1)
-                        .blur(radius: 50, opaque: true)   // Aplica el desenfoque
-                        .clipped()
-                        .frame(maxWidth: .infinity)
-                        .transition(.opacity)  // Animación de aparición/desaparición
-                    .animation(.easeInOut, value: hasScrolled)// Animación suave al mostrar la imagen
-                    
-                    Spacer()
-                }.ignoresSafeArea()
-                    
+                CardImageDifusa(image: dish.dishPhoto, hasScrolled: hasScrolled)
             }
             ButtonAddToCarView(dish: $dish, total: Float(dish.dishPrice * Double(valor!)) +
                                valorComplementary, valor: $valor)
