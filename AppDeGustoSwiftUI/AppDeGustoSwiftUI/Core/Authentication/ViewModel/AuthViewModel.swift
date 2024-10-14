@@ -7,9 +7,11 @@
 
 import Foundation
 
+@MainActor
 class AuthViewModel: ObservableObject {
+    @Published var userLogin: Login?
     @Published var userSession: ValidationSession?
-    @Published var currentUser=""
+    @Published var currentUser: User?
     let mockJSON = """
     {
       "id": 0,
@@ -27,11 +29,11 @@ class AuthViewModel: ObservableObject {
         }
     }
     /// Validar si esta la Sesión activa del usuario
-    /// - Returns: Datos de la sesion o nulo
+    /// - Returns: Datos de la sesión o nulo
     func validationSession() async -> ValidationSession? {
         
         // Validar si la URL es correcta
-        guard let url = URL(string: AuthViewModel.URLAPI + PathURL.ValidateSessionPath.rawValue) else {
+        guard let url = URL(string: URLPath.validateSessionPath.url) else {
             print( APIError.invalidURL)
             return nil
         }
@@ -41,7 +43,7 @@ class AuthViewModel: ObservableObject {
 //            let valideSession = try decoder.decode(ValidationSession.self, from: mockJSON)
 //            print("Validation Session: \(valideSession)")
 //            return valideSession
-//            
+//
             // Realizar la solicitud
             let (data, response) = try await URLSession.shared.data(from: url)
             // Verificar si la respuesta es HTTPURLResponse y manejar errores HTTP
@@ -54,7 +56,6 @@ class AuthViewModel: ObservableObject {
                 // Decodificar los datos JSON
                 let decoder = JSONDecoder()
                 let valideSession = try decoder.decode(ValidationSession.self, from: data)
-                print("Validation Session: \(valideSession)")
                 return valideSession
             } else {
                 // Intentar leer el cuerpo de la respuesta para obtener el mensaje de error
@@ -75,10 +76,81 @@ class AuthViewModel: ObservableObject {
     }
 
     func signIn(withUserName userName:String, password:String) async throws {
-        print("Iniciar Sesión")
+        // Validar si la URL es correcta
+        guard let loginUrl = URL(string: URLPath.login.url) else {
+            print( APIError.invalidURL)
+            return
+        }
+        var request = URLRequest(url:loginUrl)
+        request.httpMethod = "POST"
+        let body = "userName=\(userName)&userPassword=\(password)"
+        request.httpBody = body.data(using: .utf8)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print( APIError.invalidResponse)
+            return
+        }
+        if (200...299).contains(httpResponse.statusCode) {
+            let decoder = JSONDecoder()
+            let userLogin = try decoder.decode(Login.self, from: data)
+            DispatchQueue.main.async {
+                self.userLogin = userLogin
+            }
+            self.userSession = await validationSession()
+            print("Iniciar Sesión")
+        } else {
+            // Intentar leer el cuerpo de la respuesta para obtener el mensaje de error
+            if let responseBody = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let message = responseBody["message"] as? String {
+                print( APIError.serverError(statusCode: httpResponse.statusCode, message: message))
+                return
+            } else {
+                print( APIError.serverError(statusCode: httpResponse.statusCode, message: nil))
+                return
+            }
+        }
+        
     }
-    func createUser(fullName: String, withUserName userName: String, password: String) async throws {
-        print("Registrarse")
+    func createUser(fullName: String, email: String, phoneNumber:String, withUserName userName: String, password: String) async throws -> Bool {
+        // Validar si la URL es correcta
+        guard let registerUrl = URL(string: URLPath.register.url) else {
+            print( APIError.invalidURL)
+            return false
+        }
+        var request = URLRequest(url:registerUrl)
+        request.httpMethod = "POST"
+        
+        let currentDate = Date()  // Obtiene la fecha actual
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"  // Especifica el formato deseado
+        let formattedDate = dateFormatter.string(from: currentDate)  // Convierte la fecha a String
+
+        let body = "personTypeId=2&name=\(fullName)&email=\(email)&phoneNumber=\(phoneNumber)&userName=\(userName)&password=\(password)&createDate=\(formattedDate)"
+        request.httpBody = body.data(using: .utf8)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print( APIError.invalidResponse)
+            return false
+        }
+        if (200...299).contains(httpResponse.statusCode) {
+            let decoder = JSONDecoder()
+            let userSession = try decoder.decode(User.self, from: data)
+            DispatchQueue.main.async {
+                self.currentUser = userSession
+            }
+            self.userSession = await validationSession()
+            print("Crear Cuenta")
+            return true
+        } else {
+            // Intentar leer el cuerpo de la respuesta para obtener el mensaje de error
+            if let responseBody = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let message = responseBody["message"] as? String {
+                print( APIError.serverError(statusCode: httpResponse.statusCode, message: message))
+            } else {
+                print( APIError.serverError(statusCode: httpResponse.statusCode, message: nil))
+            }
+            return false
+        }
     }
     func signOut() {
         
@@ -86,9 +158,7 @@ class AuthViewModel: ObservableObject {
     func deleteAccount() {
         
     }
-    func fetchUser() async {
-        
-    }
+
     func verifyResponse (response: URLResponse, data: Data) {
         // Verificar si la respuesta es una HTTPURLResponse
         if let httpResponse = response as? HTTPURLResponse {

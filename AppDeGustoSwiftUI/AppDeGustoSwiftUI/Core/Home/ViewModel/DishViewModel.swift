@@ -17,13 +17,19 @@ class DishViewModel: ObservableObject {
     /// Lista de los Tipos de Categoría de los Platos
     func getAllDishCategory() {
         Task {
-            let url = URL(string: AuthViewModel.URLAPI + PathURL.DishCategoryPath.rawValue)!
+            
+            guard let url = URL(string: URLPath.dishCategoryPath.url) else {
+                print( APIError.invalidURL)
+                return
+            }
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let results = try decoder.decode([DishCategory].self, from: data)
-                dishCategory = results
+                DispatchQueue.main.async {
+                    self.dishCategory = results
+                }
             } catch {
-                print("Error en la solicitud: \(APIError.requestFailed(error))")
+                print("getAllDishCategory Error en la solicitud: \(APIError.requestFailed(error))")
             }
         }
     }
@@ -33,6 +39,7 @@ class DishViewModel: ObservableObject {
     func getPopularDish(id:Int) {
         Task {
             let url = URL(string: "\(URLPath.dishPopular.url)/\(id)")!
+            print(url)
             do{
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let results = try decoder.decode([Dish].self, from: data)
@@ -50,9 +57,11 @@ class DishViewModel: ObservableObject {
                     }
                     return updatedDish
                 }
-                dishPopular = updatedResults
+                DispatchQueue.main.async {
+                    self.dishPopular = updatedResults
+                }
             } catch {
-                print("Solicitud rechazada")
+                print("getPopularDish Solicitud rechazada")
             }
         }
     }
@@ -65,10 +74,12 @@ class DishViewModel: ObservableObject {
             do{
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let results = try decoder.decode([Dish].self, from: data)
-                dishByBusiness = results
+                DispatchQueue.main.async {
+                    self.dishByBusiness = results
+                }
                 print(dishByBusiness)
             } catch {
-                print("Solicitud rechazada")
+                print("getDishByBusiness Solicitud rechazada")
             }
         }
     }

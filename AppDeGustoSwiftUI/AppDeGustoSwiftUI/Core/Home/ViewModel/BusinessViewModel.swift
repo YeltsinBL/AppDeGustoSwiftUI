@@ -13,17 +13,25 @@ class BusinessViewModel: ObservableObject {
     let decoder = JSONDecoder()
     
     /// Lista de los 5 negociones mas populares
-    func getBusinessPopular() {
-        Task {
+    func getBusinessPopular() async {
+        //Task {
             let url = URL(string: "\(URLPath.businessPopular.url)?latitude=-8.074157889449705&longitude=-79.05579181295246")!
             do{
-                let (data, _) = try await URLSession.shared.data(from: url)
+                let (data, response) = try await URLSession.shared.data(from: url)
+                // Verificar si la respuesta es HTTPURLResponse y manejar errores HTTP
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    print( APIError.invalidResponse)
+                    return
+                }
+                // Decodificar los datos JSON
                 let results = try decoder.decode([Business].self, from: data)
-                businessPopular = results
+                DispatchQueue.main.async {
+                    self.businessPopular = results
+                }
             } catch {
-                print("Solicitud rechazada")
+                print("getBusinessPopular Solicitud rechazada")
             }
-        }
+       // }
     }
     
     func businessAreasList() async throws {

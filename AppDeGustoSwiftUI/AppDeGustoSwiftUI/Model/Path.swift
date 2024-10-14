@@ -14,7 +14,10 @@ enum PathURL: String {
 }
 
 enum URLPath {
+    case user
     case validateSessionPath
+    case login
+    case register
     case dishPath
     case dishCategoryPath
     case dishPopular
@@ -28,8 +31,14 @@ enum URLPath {
         let baseURL = ProcessInfo.processInfo.environment["URLAPI"] ?? "http://localhost:3000/api/"
         
         switch self {
+        case .user:
+            return "\(baseURL)user"
         case .validateSessionPath:
-            return "\(baseURL)user/validateSession"
+            return "\(URLPath.user.url)/validateSession"
+        case .login:
+            return "\(URLPath.user.url)/login"
+        case .register:
+            return "\(URLPath.user.url)/register"
         case .dishPath:
             return "\(baseURL)dish"
         case .dishCategoryPath:

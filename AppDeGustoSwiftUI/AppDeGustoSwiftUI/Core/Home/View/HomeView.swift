@@ -41,15 +41,20 @@ struct HomeView: View {
                                             viewModelDish.getPopularDish(id: dishCategory.id)
                                         }
                                 }
+                                
                             }
                         }
                         .padding(.top)
                         .padding(.leading)
                         .padding(.bottom)
                         
-                        Text("Restaurantes")
-                            .font(.custom("IstokWeb-Bold", size: 24))
-                            .padding(.horizontal)
+                        VStack {
+                            Text("Restaurantes ")
+                                .font(.custom("IstokWeb-Regular", size: 24))
+                                .foregroundStyle(Color("Primary"))
+                            + Text("Mas Populares")
+                                .font(.custom("IstokWeb-Bold", size: 28)).foregroundStyle(Color("Primary")).bold()
+                        }.padding(.horizontal)
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
@@ -65,19 +70,19 @@ struct HomeView: View {
                             .padding(.leading)
                         }
                         
-                        Text("Platos Recomendados")
-                            .font(.custom("IstokWeb-Bold", size: 24))
-                            .padding(.horizontal)
-                            .padding(.top)
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
-                                    CardDishView(dish:dishPopular, size: 180)
-                                }
-                                .padding(.trailing)
-                            }
-                            .padding(.leading)
-                        }
+//                        Text("Platos Recomendados")
+//                            .font(.custom("IstokWeb-Bold", size: 24))
+//                            .padding(.horizontal)
+//                            .padding(.top)
+//                        ScrollView (.horizontal, showsIndicators: false) {
+//                            HStack {
+//                                ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
+//                                    CardDishView(dish:dishPopular, size: 180)
+//                                }
+//                                .padding(.trailing)
+//                            }
+//                            .padding(.leading)
+//                        }
                     }
                 }
                 
@@ -86,8 +91,13 @@ struct HomeView: View {
             }
             .onAppear{
                 viewModelDish.getAllDishCategory()
-                viewModelDish.getPopularDish(id: selectedIndex+1)
-                viewModelBusiness.getBusinessPopular()
+                Task {
+                    await viewModelBusiness.getBusinessPopular()  // Se usa try para manejar el posible error
+                        
+                }
+                
+
+//                viewModelDish.getPopularDish(id: selectedIndex+1)
             }
         }
     }
@@ -120,10 +130,10 @@ struct AppBarView: View {
 
 struct TagLineView: View {
     var body: some View {
-        Text("Encuentra el \nmejor ")
+        Text("Encuentra los \nmejores ")
             .font(.custom("IstokWeb-Regular", size: 28))
             .foregroundStyle(Color("Primary"))
-        + Text("Restaurante!")
+        + Text("Restaurantes!")
             .font(.custom("IstokWeb-Bold", size: 28))
             .foregroundStyle(Color("Primary"))
     }

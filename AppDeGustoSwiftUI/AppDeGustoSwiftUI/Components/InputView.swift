@@ -23,11 +23,11 @@ struct InputView: View {
             if isSecureField {
                 SecureField(placeholder, text: $text, prompt: Text(placeholder).foregroundStyle(.white))
                     .foregroundStyle(Color(.white))
-                    .font(.system(size: 18))
+                    .font(.system(size: 18)).textContentType(.none)
             }else {
                 TextField(placeholder, text: $text, prompt: Text(placeholder).foregroundStyle(.white))
                     .foregroundStyle(Color(.white))
-                    .font(.system(size: 18))
+                    .font(.system(size: 18)).textContentType(.none)
             }
             Divider()
         }
