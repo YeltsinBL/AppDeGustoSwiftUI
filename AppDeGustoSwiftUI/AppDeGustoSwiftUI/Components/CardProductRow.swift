@@ -29,7 +29,7 @@ struct CardProductRow: View {
             }
         }
         .padding(.horizontal)
-        .frame(width: .infinity, alignment: .leading)
+        .frame(alignment: .leading)
     }
 }
 

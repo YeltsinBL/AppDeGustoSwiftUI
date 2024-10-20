@@ -18,7 +18,7 @@ struct CartView: View {
                         if cartManager.dishes.count > 0 {
                             ForEach($cartManager.dishes, id:\.id) { $dish in
                                 CardProductRow(dish: dish, valor: $dish.quantity).environmentObject(cartManager)
-                                Rectangle().frame(width: .infinity, height: 1).padding(.leading).padding(.trailing).foregroundStyle(.gray.opacity(0.2))
+                                Rectangle().frame(height: 1).padding(.leading).padding(.trailing).foregroundStyle(.gray.opacity(0.2))
                             }
                             HStack {
                                 
@@ -31,7 +31,7 @@ struct CartView: View {
                         }
                         
                     }
-                    .frame(width: .infinity)
+                    .foregroundStyle(.black).bold()
                     .navigationBarBackButtonHidden(true)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar{
