@@ -48,7 +48,7 @@ struct RegistrationView: View {
                             .padding(.top, 12)
                             Button {
                                 Task {
-                                    try session = await viewModel.createUser(fullName: fullName, email: email, phoneNumber: phoneNumber, withUserName:email, password:password)
+                                    try session = await viewModel.createUser(fullName: fullName, email: email, phoneNumber: phoneNumber, withUserName:userName, password:password)
                                     
                                     if(session) {
                                         dismiss()
