@@ -8,28 +8,63 @@
 import SwiftUI
 
 struct SideMenuView: View {
-    @Binding var isShowing: Bool
-        var content: AnyView
-        var edgeTransition: AnyTransition = .move(edge: .leading)
-        var body: some View {
-            ZStack(alignment: .bottom) {
-                if (isShowing) {
-                    Color.black
-                        .opacity(0.3)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            isShowing.toggle()
+    @EnvironmentObject var viewModel: AuthViewModel
+    @Binding var presentSideMenu: Bool
+    @State  var selectedOption: SideMenuRowType?
+    var body: some View {
+        ScrollView(.vertical) {
+            VStack(alignment: .leading, spacing: 36) {
+                HStack{
+                    Image(systemName: "person.circle.fill")
+                        .imageScale(.large)
+                        .foregroundStyle(.white)
+                        .frame(width: 60, height:  60)
+                        .background(Color("Primary"))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding(.vertical)
+                    VStack(alignment:.leading, spacing: 6) {
+                        Text(viewModel.userSession?.username ?? "")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
+                        Text(viewModel.userSession?.personEmail ?? "")
+                            .font(.subheadline)
+                            .tint(.gray)
+                    }
+                }.padding(.horizontal)
+                VStack(alignment: .leading) {
+                    ForEach(SideMenuRowType.allCases, id: \.rawValue){ row in
+                        if (row == .profile) {
+                            NavigationLink(destination: {
+                                UserView()
+                            }) {
+                                SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
+                            }
                         }
-                    content
-                        .transition(edgeTransition)
-                        .background(
-                            Color.clear
-                        )
+                        else if row == .checkHistory {
+                            NavigationLink(destination: {
+                                SearchView()
+                            }) {
+                                SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
+                            }
+                        }
+                        else {
+                            Button {
+                                print("Cerrar Sesion")
+                            } label:{
+                                SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
+                            }
+                        }
+                    }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .ignoresSafeArea()
-            .animation(.easeInOut, value: isShowing)
+        }
+        .background(Color("Bg"))
+        .scrollClipDisabled()
+        .scrollIndicators(.hidden)
         }
 }
 
+#Preview {
+    SideMenuView( presentSideMenu: .constant(true), selectedOption: .profile).environmentObject(AuthViewModel())
+}

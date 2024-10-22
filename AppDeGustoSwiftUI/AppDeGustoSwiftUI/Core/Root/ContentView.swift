@@ -12,10 +12,13 @@ struct ContentView: View {
     var body: some View {
         Group {
             if viewModel.userSession != nil {
-                HomeView()
+                NavigationView {
+                    HomeView().environmentObject(viewModel)
+                }
             }else {
                 LoginView()
             }
+//            HomeView()
         }
     }
 }

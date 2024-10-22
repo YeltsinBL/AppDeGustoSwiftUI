@@ -25,6 +25,7 @@
 		3B69A60F2CAF82F6005525E3 /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A60E2CAF82F6005525E3 /* BusinessViewModel.swift */; };
 		3B69A6112CAF832A005525E3 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6102CAF832A005525E3 /* Business.swift */; };
 		3B69A6132CAFC1E1005525E3 /* CardBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */; };
+		3B755BBC2CC5E39000E5217C /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B755BBB2CC5E38F00E5217C /* SideBarView.swift */; };
 		3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */; };
 		3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CD2CA2696F0052280B /* ContentView.swift */; };
 		3B7CB0D02CA269710052280B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CF2CA269710052280B /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		3B7CB0E92CA27E310052280B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0E82CA27E310052280B /* User.swift */; };
 		3B7CB0ED2CA2819D0052280B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */; };
 		3B9C6CDC2CBD4BDB00253024 /* CardImageDifusa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9C6CDB2CBD4BDB00253024 /* CardImageDifusa.swift */; };
+		3BA466162CC7404700992E00 /* SideMenuRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA466152CC7404700992E00 /* SideMenuRowType.swift */; };
 		3BA5D4F72CB6F5770067190B /* CardCategorizationDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */; };
 		3BA5D4F92CB72AF90067190B /* ToolBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */; };
 		3BA5D4FB2CB731260067190B /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D4FA2CB731260067190B /* DishView.swift */; };
@@ -46,7 +48,7 @@
 		3BA5D5052CB7A33F0067190B /* ButtonAddToCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D5042CB7A33F0067190B /* ButtonAddToCarView.swift */; };
 		3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E32CB3CDA500DC10D9 /* CardRating.swift */; };
 		3BA903E62CB3D15500DC10D9 /* CardDistanceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */; };
-		3BACA2262CADA06D009F9316 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2252CADA06D009F9316 /* TabView.swift */; };
+		3BACA2262CADA06D009F9316 /* TabViewDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2252CADA06D009F9316 /* TabViewDesign.swift */; };
 		3BACA2292CAE051B009F9316 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2282CAE051B009F9316 /* Login.swift */; };
 		3BACA22B2CAE0AFF009F9316 /* BusinessAreas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA22A2CAE0AFE009F9316 /* BusinessAreas.swift */; };
 		3BACA22D2CAE1654009F9316 /* ValidationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA22C2CAE1654009F9316 /* ValidationSession.swift */; };
@@ -76,6 +78,7 @@
 		3B69A60E2CAF82F6005525E3 /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
 		3B69A6102CAF832A005525E3 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBusinessView.swift; sourceTree = "<group>"; };
+		3B755BBB2CC5E38F00E5217C /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		3B7CB0C82CA2696F0052280B /* AppDeGustoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDeGustoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeGustoSwiftUIApp.swift; sourceTree = "<group>"; };
 		3B7CB0CD2CA2696F0052280B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		3B7CB0E82CA27E310052280B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B7CB0EC2CA2819D0052280B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3B9C6CDB2CBD4BDB00253024 /* CardImageDifusa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageDifusa.swift; sourceTree = "<group>"; };
+		3BA466152CC7404700992E00 /* SideMenuRowType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowType.swift; sourceTree = "<group>"; };
 		3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategorizationDish.swift; sourceTree = "<group>"; };
 		3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarItemView.swift; sourceTree = "<group>"; };
 		3BA5D4FA2CB731260067190B /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
@@ -98,7 +102,7 @@
 		3BA5D5042CB7A33F0067190B /* ButtonAddToCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddToCarView.swift; sourceTree = "<group>"; };
 		3BA903E32CB3CDA500DC10D9 /* CardRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRating.swift; sourceTree = "<group>"; };
 		3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDistanceLocation.swift; sourceTree = "<group>"; };
-		3BACA2252CADA06D009F9316 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		3BACA2252CADA06D009F9316 /* TabViewDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewDesign.swift; sourceTree = "<group>"; };
 		3BACA2282CAE051B009F9316 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		3BACA22A2CAE0AFE009F9316 /* BusinessAreas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessAreas.swift; sourceTree = "<group>"; };
 		3BACA22C2CAE1654009F9316 /* ValidationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationSession.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				3B69A60C2CAF547A005525E3 /* Dish.swift */,
 				3B69A6102CAF832A005525E3 /* Business.swift */,
 				3BA5D5002CB79E620067190B /* TextFormatter.swift */,
+				3BA466152CC7404700992E00 /* SideMenuRowType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,9 +277,10 @@
 		3BACA2272CADBDBE009F9316 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				3BACA2252CADA06D009F9316 /* TabView.swift */,
+				3BACA2252CADA06D009F9316 /* TabViewDesign.swift */,
 				3B6513572CBD11E3008C1461 /* SideMenuView.swift */,
 				3B6513592CBD139A008C1461 /* SideMenuRowView.swift */,
+				3B755BBB2CC5E38F00E5217C /* SideBarView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -389,7 +395,9 @@
 				3BACA2292CAE051B009F9316 /* Login.swift in Sources */,
 				3BA5D4FF2CB7799F0067190B /* AddOnsView.swift in Sources */,
 				3BA5D4F92CB72AF90067190B /* ToolBarItemView.swift in Sources */,
+				3BA466162CC7404700992E00 /* SideMenuRowType.swift in Sources */,
 				3B7CB0E32CA26D050052280B /* InputView.swift in Sources */,
+				3B755BBC2CC5E39000E5217C /* SideBarView.swift in Sources */,
 				3BACA22D2CAE1654009F9316 /* ValidationSession.swift in Sources */,
 				3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */,
 				3BA5D4FB2CB731260067190B /* DishView.swift in Sources */,
@@ -415,7 +423,7 @@
 				3B69A6132CAFC1E1005525E3 /* CardBusinessView.swift in Sources */,
 				3BACA22F2CAE21F3009F9316 /* APIError.swift in Sources */,
 				3B69A6112CAF832A005525E3 /* Business.swift in Sources */,
-				3BACA2262CADA06D009F9316 /* TabView.swift in Sources */,
+				3BACA2262CADA06D009F9316 /* TabViewDesign.swift in Sources */,
 				3B7CB0E92CA27E310052280B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +566,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -587,6 +596,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

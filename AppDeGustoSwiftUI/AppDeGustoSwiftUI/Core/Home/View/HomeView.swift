@@ -15,107 +15,106 @@ struct HomeView: View {
     @State private var selectedIndex: Int = 4
 //    @State private var categoryDishId:Int = 1
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
+    // Side Menu Bar View
+    @State private var showMenu = false
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color("Bg")
-                    .ignoresSafeArea(edges: .all)
-                // Contenido principal
-                ScrollView {
-                    VStack (alignment: .leading){
-                        // Menu y Usuario
-                        AppBarView().environmentObject(cartManager)
-                        // Texto
-                        TagLineView()
-                            .padding()
-                        //Buscar
-                        SearchView()
-                        // Tipos de Restaurantes
-//                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                
-                                LazyVGrid(columns: [GridItem(), GridItem()]) {
-                                    ForEach(viewModelDish.dishCategory, id: \.id) {
-                                        dishCategory in
-                                        CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
-                                            .padding(.vertical,3)
-                                            .onTapGesture{
-                                                selectedIndex = dishCategory.id - 1
-                                                viewModelDish.getPopularDish(id: dishCategory.id)
-                                            }
+        ZStack {
+            Color("Bg")
+                .ignoresSafeArea(edges: .all)
+            // Contenido principal
+            ScrollView {
+                VStack (alignment: .leading){
+                    // Menu y Usuario
+                    AppBarView(showMenu: $showMenu).environmentObject(cartManager)
+                    // Texto
+                    TagLineView()
+                        .padding()
+                    //Buscar
+                    SearchView()
+                    // Tipos de Restaurantes
+                    HStack {
+                        LazyVGrid(columns: [GridItem(), GridItem()]) {
+                            ForEach(viewModelDish.dishCategory, id: \.id) {
+                                dishCategory in
+                                CategoryView(isActive: dishCategory.id - 1 == selectedIndex, text: dishCategory.dishCategoryName)
+                                    .padding(.vertical,3)
+                                    .onTapGesture{
+                                        selectedIndex = dishCategory.id - 1
+                                        viewModelDish.getPopularDish(id: dishCategory.id)
                                     }
-                                }
-                            }.padding()
-//                        }
-//                        .padding(.top)
-//                        .padding(.leading)
-//                        .padding(.bottom)
-                        
-                        VStack {
-                            Text("Restaurantes ")
-                                .font(.custom("IstokWeb-Regular", size: 24))
-                                .foregroundStyle(Color("Primary"))
-                            + Text("Mas Populares")
-                                .font(.custom("IstokWeb-Bold", size: 28)).foregroundStyle(Color("Primary")).bold()
-                        }.padding(.horizontal)
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
-                                    NavigationLink(destination: BusinessView(business:businessPopular).environmentObject(cartManager), label: {
-                                        CardBusinessView(business: businessPopular, size: 210)
-                                    })
-                                    .toolbar(Visibility.hidden)
-                                    .foregroundStyle(.black)
-                                    
-                                }
-                                .padding(.trailing)
                             }
-                            .padding(.leading)
                         }
-                        
-                        Text("Platos Recomendados")
-                            .font(.custom("IstokWeb-Bold", size: 24))
+                    }.padding()
+                    
+                    VStack {
+                        Text("Restaurantes ")
+                            .font(.custom("IstokWeb-Regular", size: 24))
                             .foregroundStyle(Color("Primary"))
-                            .padding(.horizontal)
-                            .padding(.top)
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
-                                    CardDishView(dish:dishPopular, size: 180)
-                                }
-                                .padding(.trailing)
+                        + Text("Mas Populares")
+                            .font(.custom("IstokWeb-Bold", size: 28)).foregroundStyle(Color("Primary")).bold()
+                    }.padding(.horizontal)
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
+                                NavigationLink(destination: BusinessView(business:businessPopular).environmentObject(cartManager), label: {
+                                    CardBusinessView(business: businessPopular, size: 210)
+                                })
+                                .toolbar(Visibility.hidden)
+                                .foregroundStyle(.black)
+                                
                             }
-                            .padding(.leading)
+                            .padding(.trailing)
                         }
+                        .padding(.leading)
+                    }
+                    
+                    Text("Platos Recomendados")
+                        .font(.custom("IstokWeb-Bold", size: 24))
+                        .foregroundStyle(Color("Primary"))
+                        .padding(.horizontal)
+                        .padding(.top)
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(viewModelDish.dishPopular, id: \.id){ dishPopular in
+                                CardDishView(dish:dishPopular, size: 180)
+                            }
+                            .padding(.trailing)
+                        }
+                        .padding(.leading)
                     }
                 }
-                
-                // Diseño del Tab View
-//                TabView()
             }
-            .onAppear{
-                viewModelDish.getAllDishCategory()
-                Task {
-                    await viewModelBusiness.getBusinessPopular()  // Se usa try para manejar el posible error
-                        
-                }
+            
+            // Diseño del Tab View
+//              TabView()
                 
-
-//                viewModelDish.getPopularDish(id: selectedIndex+1)
+            // Diseño del Side Menu View
+            SideBarView(isShowing: $showMenu)
+                .environmentObject(viewModel)
+        }
+        .onAppear{
+//              showMenu = false
+            viewModelDish.getAllDishCategory()
+            Task {
+                await viewModelBusiness.getBusinessPopular()  // Se usa try para manejar el posible error
             }
         }
     }
 }
 
 #Preview {
-    HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+    NavigationView {
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+    }
+    
 }
 
 struct AppBarView: View {
     @EnvironmentObject var cartManager: CartManager
+    @Binding var showMenu: Bool
     var body: some View {
         HStack {
-            Button(action: {}) {
+            Button(action: {showMenu.toggle()}) {
                 Image("menu")
                     .padding()
                     .background(Color.white)

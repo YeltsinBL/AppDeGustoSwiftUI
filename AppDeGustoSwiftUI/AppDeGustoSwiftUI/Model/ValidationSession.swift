@@ -10,6 +10,7 @@ struct ValidationSession: Identifiable, Decodable {
     let id: Int
     let username: String
     let userStatus: Int
+    let personEmail: String
     let iat: Int
     let exp: Int
 

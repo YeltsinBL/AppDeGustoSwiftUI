@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabView: View {
+struct TabViewDesign: View {
         
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct TabView: View {
 }
 
 #Preview {
-    TabView()
+    TabViewDesign()
 }
 
 struct BottomNavBarItem: View {
