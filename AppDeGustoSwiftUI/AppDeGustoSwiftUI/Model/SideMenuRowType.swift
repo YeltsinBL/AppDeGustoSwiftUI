@@ -8,12 +8,15 @@
 import Foundation
 
 enum SideMenuRowType: Int, CaseIterable{
+    case business
     case profile
     case checkHistory
     case logout
     
     var title: String{
         switch self {
+        case .business:
+            return "Negocio Nuevo Diseño"
         case .profile:
             return "Cuenta"
         case .checkHistory:
@@ -25,6 +28,8 @@ enum SideMenuRowType: Int, CaseIterable{
     
     var iconName: String{
         switch self {
+        case .business:
+            return "house.fill"
         case .profile:
             return "person.circle.fill"
         case .checkHistory:

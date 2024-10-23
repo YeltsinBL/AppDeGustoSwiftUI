@@ -34,6 +34,13 @@ struct SideMenuView: View {
                 }.padding(.horizontal)
                 VStack(alignment: .leading) {
                     ForEach(SideMenuRowType.allCases, id: \.rawValue){ row in
+                        if (row == .business) {
+                            NavigationLink(destination: {
+                                BusinessNewView()
+                            }) {
+                                SideMenuRowView(sideMenuRowType: SideMenuRowType.business, selectedOption: $selectedOption)
+                            }
+                        } else
                         if (row == .profile) {
                             NavigationLink(destination: {
                                 UserView()
@@ -50,7 +57,7 @@ struct SideMenuView: View {
                         }
                         else {
                             Button {
-                                print("Cerrar Sesion")
+                                print("Cerrar Sesión")
                             } label:{
                                 SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
                             }

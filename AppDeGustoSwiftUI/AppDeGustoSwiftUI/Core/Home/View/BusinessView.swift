@@ -159,3 +159,66 @@ struct DescriptionView: View {
 //        .padding(.trailing)
     }
 }
+struct BusinessCategoryView: View {
+    @StateObject var homeData = BusinessViewModel()
+    var body: some View {
+        // Scroll Automático
+        ScrollViewReader { reader in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
+                    ForEach(tabItems) { tab in
+                        Text(tab.tab)
+                            .font(.caption)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal)
+                            .background(Color("Primary").opacity(homeData.selectedTab == tab.tab ? 1 : 0))
+                            .clipShape(Capsule())
+                            .foregroundStyle(homeData.selectedTab == tab.tab ? .white : .black)
+                            .id(tab.tab)
+                    }
+                    .onChange(of: homeData.selectedTab) {
+                        withAnimation(.easeInOut) {
+                            reader.scrollTo(homeData.selectedTab, anchor: .leading)
+                        }
+                        
+                    }
+                }
+            }
+//            .opacity(homeData.offset > 150 ? Double((homeData.offset - 150) / 50) : 0)
+        }
+        .padding(.horizontal)
+    }
+}
+struct BusinessDishView: View {
+    @StateObject var homeData = BusinessViewModel()
+    var body: some View {
+        ForEach(tabItems) { tab in
+            VStack(alignment: .leading, spacing: 15) {
+                Text(tab.tab)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.bottom)
+                    .padding(.leading)
+                // Platos
+                ForEach(tab.dish) { food in
+                    CardDishNewView(dish: food)
+                    
+                }
+                Divider().padding(.top)
+            }
+            .tag(tab.tab)
+            .overlay (
+                GeometryReader{ reader -> Text in
+                    let offset = reader.frame(in: .global).minY
+                    let height = UIApplication.shared.windows.first!.safeAreaInsets.top + 100
+                    if offset < height && offset > 50 && homeData.selectedTab != tab.tab{
+                        DispatchQueue.main.async {
+                            self.homeData.selectedTab = tab.tab
+                        }
+                    }
+                    return Text("")
+                }
+            )
+        }
+    }
+}

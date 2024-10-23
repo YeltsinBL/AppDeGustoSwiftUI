@@ -104,7 +104,7 @@ struct HomeView: View {
 
 #Preview {
     NavigationView {
-        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init()).environmentObject(AuthViewModel())
     }
     
 }

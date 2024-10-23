@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BusinessNewView: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModelDish = DishViewModel()
     @StateObject var homeData = BusinessViewModel()
     var body: some View {
@@ -22,6 +23,7 @@ struct BusinessNewView: View {
                             self.homeData.offset = -offset
                         }
                     }
+                    print(offset)
                     return AnyView(
                         Image("plato1")
                             .resizable()
@@ -35,7 +37,7 @@ struct BusinessNewView: View {
                 
                 // Negocio
                 Section(header: CardBusinessHeaderView()) {
-                    // Categorias de platos
+                    // Categorías de platos
                     ForEach(tabItems) { tab in
                         VStack(alignment: .leading, spacing: 15) {
                             Text(tab.tab)
@@ -67,6 +69,7 @@ struct BusinessNewView: View {
                 }
             }
         }
+        .ignoresSafeArea()
         .background(Color("Bg"))
         .overlay(
             Color("Bg")
@@ -76,6 +79,21 @@ struct BusinessNewView: View {
                 .opacity(homeData.offset > 250 ? 1 : 0)
             ,alignment: . top
         )
+        .navigationBarBackButtonHidden()
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                                .tint(Color("Primary"))
+                                .padding(.all, 8)
+                                .background(.white)
+                                .clipShape(Circle())
+                }
+            }
+        }
+        .toolbarBackground(.hidden)
         .onAppear {
            // viewModelDish.getDishByBusiness(id: 1)
         }

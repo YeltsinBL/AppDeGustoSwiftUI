@@ -41,7 +41,7 @@ struct CardBusinessHeaderView: View {
                             .padding(.leading, 10)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                }.opacity(homeData.offset > 200 ? 1 -  Double((homeData.offset - 200) / 50) : 1)
+                }.opacity(homeData.offset > 150 ? 1 -  Double((homeData.offset - 150) / 50) : 1)
                 
                 // Scroll Automatico
                 ScrollViewReader { reader in
@@ -65,13 +65,13 @@ struct CardBusinessHeaderView: View {
                             }
                         }
                     }
-                    .opacity(homeData.offset > 200 ? Double((homeData.offset - 200) / 50) : 0)
+                    .opacity(homeData.offset > 150 ? Double((homeData.offset - 150) / 50) : 0)
                 }
             }
             .frame(height: 60)
             
             
-            if homeData.offset > 250 {
+            if homeData.offset > 195 {
                 Divider()
             }
         }
@@ -81,9 +81,9 @@ struct CardBusinessHeaderView: View {
     }
     
     func getSize() -> CGFloat{
-        
-        if homeData.offset > 200 {
-            let progress = (homeData.offset - 200) / 50
+        print(homeData.offset)
+        if homeData.offset > 150 {
+            let progress = (homeData.offset - 150) / 50
             if progress <= 1.0{
                 return progress * 40
             }else {
@@ -97,5 +97,9 @@ struct CardBusinessHeaderView: View {
 }
 
 #Preview {
-    CardBusinessHeaderView().environmentObject(BusinessViewModel())
+    NavigationView {
+        SideBarView(isShowing: .constant(true)).environmentObject(AuthViewModel())
+    }
+//    BusinessNewView()
+//    CardBusinessHeaderView().environmentObject(BusinessViewModel())
 }
