@@ -8,17 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
+//    @EnvironmentObject var viewModel: AuthViewModel
+    @StateObject var viewModel = AuthViewModel()
+    @State private var isLoading = true
     var body: some View {
         Group {
-            if viewModel.userSession != nil {
-                NavigationView {
-                    HomeView().environmentObject(viewModel)
+            if isLoading {
+                // Mostrar el splash screen mientras se carga
+                SplashScreenView()
+            } else {
+                if viewModel.userSession != nil {
+                    NavigationView {
+                        HomeView().environmentObject(viewModel)
+                    }
+                }else {
+                    LoginView()
                 }
-            }else {
-                LoginView()
+//                NavigationView {
+//                    HomeView().environmentObject(viewModel)
+//                }
             }
-//            HomeView()
+        }
+        .onAppear {
+            Task {
+                _ = await viewModel.validationSession()
+                withAnimation {
+                    isLoading = false
+                }
+            }
+            
         }
     }
 }

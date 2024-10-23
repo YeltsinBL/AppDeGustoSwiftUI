@@ -15,6 +15,7 @@
 		3B07BA482CAB22D200B67327 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B07BA422CAB22D200B67327 /* OFL.txt */; };
 		3B07BA4B2CAB634600B67327 /* BusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B07BA4A2CAB634600B67327 /* BusinessView.swift */; };
 		3B07BA4D2CAB6CFB00B67327 /* CardDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B07BA4C2CAB6CFB00B67327 /* CardDishView.swift */; };
+		3B15E3042CC82FFB00474C01 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B15E3032CC82FFA00474C01 /* SplashScreenView.swift */; };
 		3B33B2372CB84F21002487B8 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B33B2362CB84F21002487B8 /* CartManager.swift */; };
 		3B33B2392CB8569C002487B8 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B33B2382CB8569C002487B8 /* CartButton.swift */; };
 		3B33B23B2CB8586C002487B8 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B33B23A2CB8586C002487B8 /* CartView.swift */; };
@@ -68,6 +69,7 @@
 		3B07BA492CAB23A100B67327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3B07BA4A2CAB634600B67327 /* BusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessView.swift; sourceTree = "<group>"; };
 		3B07BA4C2CAB6CFB00B67327 /* CardDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDishView.swift; sourceTree = "<group>"; };
+		3B15E3032CC82FFA00474C01 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		3B33B2362CB84F21002487B8 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		3B33B2382CB8569C002487B8 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		3B33B23A2CB8586C002487B8 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				3B7CB0CD2CA2696F0052280B /* ContentView.swift */,
+				3B15E3032CC82FFA00474C01 /* SplashScreenView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				3BA903E62CB3D15500DC10D9 /* CardDistanceLocation.swift in Sources */,
 				3BA5D4FD2CB742710067190B /* ContainerDescriptionView.swift in Sources */,
 				3B07BA4D2CAB6CFB00B67327 /* CardDishView.swift in Sources */,
+				3B15E3042CC82FFB00474C01 /* SplashScreenView.swift in Sources */,
 				3B69A60F2CAF82F6005525E3 /* BusinessViewModel.swift in Sources */,
 				3BACA2292CAE051B009F9316 /* Login.swift in Sources */,
 				3BA5D4FF2CB7799F0067190B /* AddOnsView.swift in Sources */,
@@ -553,6 +557,7 @@
 		3B7CB0D72CA269710052280B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,7 +568,6 @@
 				INFOPLIST_FILE = AppDeGustoSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -583,6 +587,7 @@
 		3B7CB0D82CA269710052280B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -593,7 +598,6 @@
 				INFOPLIST_FILE = AppDeGustoSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
