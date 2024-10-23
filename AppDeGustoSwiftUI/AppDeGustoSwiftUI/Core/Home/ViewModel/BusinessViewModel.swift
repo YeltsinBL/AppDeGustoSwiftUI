@@ -8,6 +8,9 @@
 import Foundation
 
 class BusinessViewModel: ObservableObject {
+    @Published var offset: CGFloat = 0
+    @Published var selectedTab = tabItems.first!.tab
+    
     @Published var businessPopular: [Business] = []
     
     let decoder = JSONDecoder()
