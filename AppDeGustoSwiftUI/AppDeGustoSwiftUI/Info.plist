@@ -9,14 +9,5 @@
 		<string>IstokWeb-Italic.ttf</string>
 		<string>IstokWeb-Regular.ttf</string>
 	</array>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIColorName</key>
-		<string>Primary</string>
-		<key>UIImageName</key>
-		<string>logo</string>
-		<key>UILaunchScreen</key>
-		<dict/>
-	</dict>
 </dict>
 </plist>
