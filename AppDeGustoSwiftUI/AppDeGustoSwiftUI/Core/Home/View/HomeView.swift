@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
     @StateObject var viewModelDish = DishViewModel()
     @StateObject var viewModelBusiness = BusinessViewModel()
     @StateObject var cartManager = CartManager()
@@ -90,7 +89,6 @@ struct HomeView: View {
                 
             // Diseño del Side Menu View
             SideBarView(isShowing: $showMenu)
-                .environmentObject(viewModel)
         }
         .onAppear{
 //              showMenu = false
@@ -104,7 +102,7 @@ struct HomeView: View {
 
 #Preview {
     NavigationView {
-        HomeView(viewModelDish: .init(), viewModelBusiness: .init()).environmentObject(AuthViewModel())
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
     }
     
 }

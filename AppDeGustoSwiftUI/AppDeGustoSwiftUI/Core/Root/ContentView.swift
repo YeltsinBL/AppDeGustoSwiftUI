@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @EnvironmentObject var viewModel: AuthViewModel
-    @StateObject var viewModel = AuthViewModel()
+    @EnvironmentObject var viewModel: AuthViewModel
+//    @StateObject var viewModels = AuthViewModel()
     @State private var isLoading = true
     var body: some View {
         Group {
@@ -19,13 +19,13 @@ struct ContentView: View {
             } else {
                 if viewModel.userSession != nil {
                     NavigationView {
-                        HomeView().environmentObject(viewModel)
+                        HomeView()
                     }
                 }else {
                     LoginView()
                 }
 //                NavigationView {
-//                    HomeView().environmentObject(viewModel)
+//                    HomeView()
 //                }
             }
         }

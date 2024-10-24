@@ -152,8 +152,50 @@ class AuthViewModel: ObservableObject {
             return false
         }
     }
-    func signOut() {
-        
+    func signOut() async {
+        self.userSession = await validationSession()
+        // Validar si la URL es correcta
+        guard let url = URL(string: URLPath.logout.url) else {
+            print( APIError.invalidURL)
+            return
+        }
+        var request = URLRequest(url:url)
+        request.httpMethod = "POST"
+        do {
+            print(request)
+            // Realizar la solicitud
+            let (data, response) = try await URLSession.shared.data(for: request)
+            // Verificar si la respuesta es HTTPURLResponse y manejar errores HTTP
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print( APIError.invalidResponse)
+                return
+            }
+            print(data, httpResponse.statusCode)
+            // Verificar el código de estado HTTP
+            if (200...299).contains(httpResponse.statusCode) {
+                if let responseBody = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let message = responseBody["message"] as? String {
+                    print( "Cerrar Sesion(statusCode: \(httpResponse.statusCode), message: \(message))")
+                }
+                print("Cerro sesión")
+                self.userSession = nil
+                self.currentUser = nil
+                self.userLogin = nil
+                return
+            } else {
+                // Intentar leer el cuerpo de la respuesta para obtener el mensaje de error
+                if let responseBody = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let message = responseBody["message"] as? String {
+                    print( APIError.serverError(statusCode: httpResponse.statusCode, message: message))
+                    return
+                } else {
+                    print( APIError.serverError(statusCode: httpResponse.statusCode, message: nil))
+                    return
+                }
+            }
+        } catch {
+            print("Error al cerrar sesión")
+        }
     }
     func deleteAccount() {
         

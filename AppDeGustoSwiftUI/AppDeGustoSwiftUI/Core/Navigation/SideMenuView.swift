@@ -55,12 +55,16 @@ struct SideMenuView: View {
                                 SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
                             }
                         }
-                        else {
+                        else if row == .logout {
                             Button {
-                                print("Cerrar Sesión")
+                                Task {
+                                    await viewModel.signOut()
+                                }
                             } label:{
                                 SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
                             }
+                        } else {
+                            SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
                         }
                     }
                 }

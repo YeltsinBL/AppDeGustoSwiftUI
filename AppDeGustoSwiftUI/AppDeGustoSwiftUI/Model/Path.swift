@@ -18,6 +18,7 @@ enum URLPath {
     case validateSessionPath
     case login
     case register
+    case logout
     case dishPath
     case dishCategoryPath
     case dishPopular
@@ -39,6 +40,8 @@ enum URLPath {
             return "\(URLPath.user.url)/login"
         case .register:
             return "\(URLPath.user.url)/register"
+        case .logout:
+            return "\(URLPath.user.url)/logout"
         case .dishPath:
             return "\(baseURL)dish"
         case .dishCategoryPath:

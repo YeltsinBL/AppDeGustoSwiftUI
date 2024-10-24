@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SideBarView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
     @Binding var isShowing:Bool
     var body: some View {
         ZStack {
@@ -21,7 +20,7 @@ struct SideBarView: View {
                     }
                 HStack {
                     VStack {
-                        SideMenuView(presentSideMenu: $isShowing).environmentObject(viewModel)
+                        SideMenuView(presentSideMenu: $isShowing)
                         Spacer()
                     }
                     .frame(width: 270, alignment: .leading)
@@ -35,5 +34,5 @@ struct SideBarView: View {
 }
 
 #Preview {
-    SideBarView(isShowing: .constant(true)).environmentObject(AuthViewModel())
+    SideBarView(isShowing: .constant(true))
 }
