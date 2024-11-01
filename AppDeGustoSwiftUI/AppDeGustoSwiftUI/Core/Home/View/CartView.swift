@@ -11,6 +11,7 @@ struct CartView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cartManager:CartManager
     @State var titulo:String
+    @State var showingBottonSheet = false
     var body: some View {
         ZStack {
             Color("Bg")
@@ -23,7 +24,7 @@ struct CartView: View {
                                     .background(.gray.opacity(0.2))
                             }
                             Button(action: {
-                                cartManager.removeAllDish()
+                                showingBottonSheet.toggle()
                             }, label: {
                                 Text("Vaciar carrito")
                                     .foregroundStyle(.red)
@@ -63,10 +64,46 @@ struct CartView: View {
             //        .toolbarBackground(.hidden)
                     .padding(.top)
         }
+        .sheet(isPresented: $showingBottonSheet) {
+            MessageSheetView(showSheet: $showingBottonSheet).environmentObject(cartManager).presentationDetents([.height(250)])
+        }
+    }
+}
+
+struct MessageSheetView:View {
+    @EnvironmentObject var cartManager:CartManager
+    @Binding var showSheet:Bool
+    var body: some View {
+        VStack(alignment:.leading) {
+            Text("Opps!").font(.title2).bold()
+                .padding(.top, 20).padding(.trailing, 20).padding(.leading,20)
+            Divider().padding()
+            Text("Estás seguro que deseas eliminar todos los platos del carrito?").lineLimit(2).padding(.trailing, 20).padding(.leading,20)
+            HStack {
+                Button {
+                    showSheet.toggle()
+                    print("No eliminar")
+                } label: {
+                    Text("Cancelar")
+                }
+                .frame(width:160).padding().bold()
+                .border(.gray.opacity(0.2)).foregroundStyle(.red)
+                .clipShape(Capsule())
+//                Spacer()
+                Button{
+//                    print(" Eliminar")
+                    cartManager.removeAllDish()
+                    showSheet.toggle()
+                } label: {
+                    Text("Sí, eliminar")
+                }.frame(width:160).padding().bold().background(Color("Primary")).foregroundStyle(.white).clipShape(RoundedRectangle(cornerRadius: 20))
+            }.padding(.top)
+        }
     }
 }
 
 #Preview {
+//    MessageSheetView()
 //    CartView(titulo: "Tu carrito")
 //        .environmentObject(CartManager())
     NavigationView {
