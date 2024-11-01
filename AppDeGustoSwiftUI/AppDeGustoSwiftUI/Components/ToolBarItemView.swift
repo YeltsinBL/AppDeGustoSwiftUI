@@ -12,11 +12,7 @@ struct ToolBarItemView: View {
     let color: Color
     var body: some View {
         HStack {
-            Image(systemName: "chevron.backward")
-                        .tint(Color("Primary"))
-                        .padding(.all, 8)
-                        .background(.white)
-                        .clipShape(Circle())
+            ImageButtonBackView()
                     Text(name)
 //                        .font(.title2)
                         .font(.custom("IstokWeb-Bold", size: 22))

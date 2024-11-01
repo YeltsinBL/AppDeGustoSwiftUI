@@ -10,6 +10,7 @@ import SwiftUI
 struct CartView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cartManager:CartManager
+    @State var titulo:String
     var body: some View {
         ZStack {
             Color("Bg")
@@ -18,8 +19,16 @@ struct CartView: View {
                         if cartManager.dishes.count > 0 {
                             ForEach($cartManager.dishes, id:\.id) { $dish in
                                 CardProductRow(dish: dish, valor: $dish.quantity).environmentObject(cartManager)
-                                Rectangle().frame(height: 1).padding(.leading).padding(.trailing).foregroundStyle(.gray.opacity(0.2))
+                                Divider()
+                                    .background(.gray.opacity(0.2))
                             }
+                            Button(action: {
+                                cartManager.removeAllDish()
+                            }, label: {
+                                Text("Vaciar carrito")
+                                    .foregroundStyle(.red)
+                                    .font(.footnote)
+                            }).padding(.vertical)
                             HStack {
                                 
                                 Text("Tu total a pagar es")
@@ -27,19 +36,27 @@ struct CartView: View {
                                 Text("\(cartManager.totalPrice, specifier: "%.2f")")
                             }.padding()
                         }else {
-                            Text("Tu carrito esta vacio")
+                            VStack(alignment: .center) {
+                                Image(systemName: "cart")
+                                    .padding(.all, 8)
+                                    .background(.gray.opacity(0.2))
+                                    .clipShape(Circle())
+                                Text("Aun no has agregado platos en tu carrito").lineLimit(2).multilineTextAlignment(.center)
+                            }.padding(.top, 30).frame(width: 300)
+                            
                         }
                         
                     }
                     .foregroundStyle(.black).bold()
                     .navigationBarBackButtonHidden(true)
                     .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle("Tu carrito")
                     .toolbar{
                         ToolbarItem(placement: .topBarLeading) {
                             Button(action: {
                                 dismiss()
                             }) {
-                                ToolBarItemView(name: "", color: .white)
+                                ImageButtonBackView()
                             }
                         }
                     }
@@ -50,6 +67,10 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView()
-        .environmentObject(CartManager())
+//    CartView(titulo: "Tu carrito")
+//        .environmentObject(CartManager())
+    NavigationView {
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+    }
+//    CartToolBar()
 }

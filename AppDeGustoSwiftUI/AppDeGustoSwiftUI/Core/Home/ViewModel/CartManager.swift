@@ -43,4 +43,8 @@ class CartManager: ObservableObject {
         }
         
     }
+    /// Eliminar todos los platos agregados en el carrito
+    func removeAllDish() {
+        dishes.removeAll()
+    }
 }

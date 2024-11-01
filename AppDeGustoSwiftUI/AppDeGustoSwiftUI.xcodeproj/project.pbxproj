@@ -62,6 +62,7 @@
 		3BACA2332CAE57B8009F9316 /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2322CAE57B8009F9316 /* DishViewModel.swift */; };
 		3BACA2352CAE57CA009F9316 /* DishCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2342CAE57CA009F9316 /* DishCategory.swift */; };
 		3BACA2372CAE5C91009F9316 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2362CAE5C91009F9316 /* Path.swift */; };
+		3BD441742CD542B700EC9E82 /* ImageButtonBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,7 @@
 		3BACA2322CAE57B8009F9316 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
 		3BACA2342CAE57CA009F9316 /* DishCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCategory.swift; sourceTree = "<group>"; };
 		3BACA2362CAE5C91009F9316 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonBackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				3B9C6CDB2CBD4BDB00253024 /* CardImageDifusa.swift */,
 				3B15E3072CC88D4F00474C01 /* CardDishNewView.swift */,
 				3B15E3092CC8924700474C01 /* CardBusinessHeaderView.swift */,
+				3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				3B65135A2CBD139A008C1461 /* SideMenuRowView.swift in Sources */,
 				3BACA2372CAE5C91009F9316 /* Path.swift in Sources */,
 				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
+				3BD441742CD542B700EC9E82 /* ImageButtonBackView.swift in Sources */,
 				3B33B23D2CB898A1002487B8 /* CardProductRow.swift in Sources */,
 				3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */,
 				3B69A6132CAFC1E1005525E3 /* CardBusinessView.swift in Sources */,
