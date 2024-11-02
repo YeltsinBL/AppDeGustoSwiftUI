@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -126,6 +126,10 @@
 		3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonBackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3BD441752CD59D4200EC9E82 /* Search */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Search; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		3B7CB0C52CA2696F0052280B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -219,6 +223,7 @@
 		3B7CB0DB2CA269F80052280B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3BD441752CD59D4200EC9E82 /* Search */,
 				3B7CB0DE2CA26A5E0052280B /* Authentication */,
 				3B7CB0DF2CA26A650052280B /* Home */,
 				3BACA2272CADBDBE009F9316 /* Navigation */,
@@ -343,6 +348,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3BD441752CD59D4200EC9E82 /* Search */,
 			);
 			name = AppDeGustoSwiftUI;
 			productName = AppDeGustoSwiftUI;

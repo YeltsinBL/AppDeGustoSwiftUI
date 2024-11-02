@@ -29,7 +29,7 @@ struct HomeView: View {
                     TagLineView()
                         .padding()
                     //Buscar
-                    SearchView()
+                    CardSearchView().environmentObject(cartManager).environmentObject(viewModelBusiness)
                     // Tipos de Restaurantes
                     HStack {
                         LazyVGrid(columns: [GridItem(), GridItem()]) {
@@ -140,20 +140,35 @@ struct TagLineView: View {
     }
 }
 
-struct SearchView: View {
+struct CardSearchView: View {
     @State private var search: String = ""
+    @EnvironmentObject var cartManager: CartManager
+    @EnvironmentObject var viewModelBusiness: BusinessViewModel
     var body: some View {
-        HStack {
-            HStack {
-                Image("Search")
-                    .padding(.trailing, 8)
-                TextField("Buscar...", text: $search)
-            }
-        }
-        .padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .padding(.horizontal)
+        NavigationLink(
+            destination: {
+                withAnimation(.easeInOut) {
+                    SearchView().environmentObject(cartManager).environmentObject(viewModelBusiness)
+                }
+            },
+            label: {
+                HStack {
+                    HStack(spacing: 0) {
+                        Image("Search").foregroundStyle(Color("Primary"))
+                            .padding(.trailing, 8)
+                        Text("Que deseas hoy?")
+                            .foregroundStyle(.gray.opacity(0.5))
+                            .bold()
+                        Spacer()
+                    }
+                }
+                .padding(.vertical, 10)
+                .padding(.horizontal)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal)
+        })
+        
     }
 }
 
