@@ -26,6 +26,8 @@
 		3B33B23D2CB898A1002487B8 /* CardProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B33B23C2CB898A1002487B8 /* CardProductRow.swift */; };
 		3B5CAF402CC9BD7400304F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5CAF3F2CC9BD7400304F72 /* LaunchScreen.storyboard */; };
 		3B5E1D222CD7D9290055E77D /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E1D212CD7D9290055E77D /* CardImageView.swift */; };
+		3B5E1D242CD7F0350055E77D /* ImageCircleSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E1D232CD7F0350055E77D /* ImageCircleSeparatorView.swift */; };
+		3B5E1D262CD7F7670055E77D /* CardAverageRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E1D252CD7F7670055E77D /* CardAverageRatingView.swift */; };
 		3B6513582CBD11E4008C1461 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6513572CBD11E3008C1461 /* SideMenuView.swift */; };
 		3B65135A2CBD139A008C1461 /* SideMenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6513592CBD139A008C1461 /* SideMenuRowView.swift */; };
 		3B69A60D2CAF547A005525E3 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A60C2CAF547A005525E3 /* Dish.swift */; };
@@ -87,6 +89,8 @@
 		3B33B23C2CB898A1002487B8 /* CardProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProductRow.swift; sourceTree = "<group>"; };
 		3B5CAF3F2CC9BD7400304F72 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B5E1D212CD7D9290055E77D /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
+		3B5E1D232CD7F0350055E77D /* ImageCircleSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCircleSeparatorView.swift; sourceTree = "<group>"; };
+		3B5E1D252CD7F7670055E77D /* CardAverageRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAverageRatingView.swift; sourceTree = "<group>"; };
 		3B6513572CBD11E3008C1461 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		3B6513592CBD139A008C1461 /* SideMenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowView.swift; sourceTree = "<group>"; };
 		3B69A60C2CAF547A005525E3 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 				3B07BA4C2CAB6CFB00B67327 /* CardDishView.swift */,
 				3BA5D4F82CB72AF90067190B /* ToolBarItemView.swift */,
 				3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */,
+				3B5E1D252CD7F7670055E77D /* CardAverageRatingView.swift */,
 				3BA903E32CB3CDA500DC10D9 /* CardRating.swift */,
 				3BA5D4F62CB6F5770067190B /* CardCategorizationDish.swift */,
 				3BA903E52CB3D15500DC10D9 /* CardDistanceLocation.swift */,
@@ -253,6 +258,7 @@
 				3B15E3072CC88D4F00474C01 /* CardDishNewView.swift */,
 				3B15E3092CC8924700474C01 /* CardBusinessHeaderView.swift */,
 				3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */,
+				3B5E1D232CD7F0350055E77D /* ImageCircleSeparatorView.swift */,
 				3B5E1D212CD7D9290055E77D /* CardImageView.swift */,
 			);
 			path = Components;
@@ -423,6 +429,7 @@
 				3B7CB0E12CA26AA70052280B /* LoginView.swift in Sources */,
 				3B6513582CBD11E4008C1461 /* SideMenuView.swift in Sources */,
 				3BA903E62CB3D15500DC10D9 /* CardDistanceLocation.swift in Sources */,
+				3B5E1D242CD7F0350055E77D /* ImageCircleSeparatorView.swift in Sources */,
 				3BA5D4FD2CB742710067190B /* ContainerDescriptionView.swift in Sources */,
 				3B15E3082CC88D4F00474C01 /* CardDishNewView.swift in Sources */,
 				3B07BA4D2CAB6CFB00B67327 /* CardDishView.swift in Sources */,
@@ -442,6 +449,7 @@
 				3BACA2352CAE57CA009F9316 /* DishCategory.swift in Sources */,
 				3B7CB0E72CA27D7A0052280B /* HomeView.swift in Sources */,
 				3B33B2372CB84F21002487B8 /* CartManager.swift in Sources */,
+				3B5E1D262CD7F7670055E77D /* CardAverageRatingView.swift in Sources */,
 				3B33B23B2CB8586C002487B8 /* CartView.swift in Sources */,
 				3BACA22B2CAE0AFF009F9316 /* BusinessAreas.swift in Sources */,
 				3B33B2392CB8569C002487B8 /* CartButton.swift in Sources */,

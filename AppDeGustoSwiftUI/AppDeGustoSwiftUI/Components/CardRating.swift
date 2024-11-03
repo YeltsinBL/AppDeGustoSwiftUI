@@ -12,11 +12,7 @@ struct CardRating: View {
     let businessTotalReviews: Int
     var body: some View {
         HStack {
-            HStack {
-                Image(systemName: "star.fill")
-                    .foregroundStyle(businessAverageRating ?? 0 >= 4.5 ? .yellow : .gray)
-                Text("\(businessAverageRating ?? 0, specifier: "%.1f")").foregroundStyle(.black).fontWeight(.bold)
-            }.padding(5).background(businessAverageRating ?? 0 >= 4.5 ? .yellow.opacity(0.2) : .gray.opacity(0.2))
+            CardAverageRatingView(businessAverageRating: businessAverageRating, size: 18).padding(5).background(businessAverageRating ?? 0 >= 4.5 ? .yellow.opacity(0.2) : .gray.opacity(0.2))
                 .clipShape(RoundedRectangle(cornerRadius: 50))
         Text("(\(businessTotalReviews))").fontWeight(.light)
                 .foregroundStyle(.gray).padding(.bottom, 2)

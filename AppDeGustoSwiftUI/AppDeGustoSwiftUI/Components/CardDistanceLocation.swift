@@ -11,11 +11,15 @@ struct CardDistanceLocation: View {
     let businessDistance: String
     let size: Int
     var body: some View {
-        HStack(spacing: 2) {
-            Image(systemName: "mappin").fontWeight(.bold).foregroundStyle(.blue)
-            Text(businessDistance).foregroundStyle(.black).fontWeight(.bold)
+        HStack(spacing: 3) {
+            Image(systemName: "mappin")
+                .resizable()
+                .scaledToFit()
+                .frame(height: CGFloat(size))
+                .fontWeight(.bold)
+            Text(businessDistance).fontWeight(.bold)
                 .font(.system(size: CGFloat(size)))
-        }.padding(5)
+        }.foregroundStyle(.black)
     }
 }
 

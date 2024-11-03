@@ -39,8 +39,8 @@ struct SearchView: View {
                         }.padding(.leading)
                         Divider().padding(.horizontal)
                         VStack {
-                            ForEach(0..<3) { _ in
-                                SearchContentBusinessView()
+                            ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
+                                SearchContentBusinessView(businessPopular: businessPopular).environmentObject(cartManager)
                             }
                         }
                     }else {
@@ -107,20 +107,27 @@ struct SearchContentIconBusinessView: View {
 }
 
 struct SearchContentBusinessView:View {
+    @EnvironmentObject var cartManager:CartManager
+    let businessPopular: Business
     var body: some View {
         VStack {
             HStack {
-                CardImageView(nameImage: "plato1", formatterShape: Circle(), valueWidth: 50)
+                CardImageView(nameImage: businessPopular.businessLogo, formatterShape: Circle(), valueWidth: 50)
                 VStack(alignment: .leading) {
-                    Text("La Granja 21").bold()
-                    HStack {
-                        Text("Valoración").font(.footnote)
-                        Text("Distancia").font(.footnote)
-                    }
+                    Text(businessPopular.businessName).bold()
+                    HStack(spacing:8) {
+                        CardAverageRatingView(businessAverageRating: businessPopular.businessAverageRating, size: 12)
+                        ImageCircleSeparatorView(sizeWidth: 5)
+                        CardCategorizationDish(sizeHeight: 12, nroCategorization: businessPopular.businessCategorization)
+                        ImageCircleSeparatorView(sizeWidth: 5)
+                        CardDistanceLocation(businessDistance: businessPopular.businessDistance,size: 12)
+//                        ImageCircleSeparatorView(sizeWidth: 5)
+//                        Text("Aforo").font(.footnote)
+                    }.offset(y:-5)
                 }
                 Spacer()
                 NavigationLink(destination: {
-                    
+                    BusinessView(business:businessPopular).environmentObject(cartManager)
                 }) {
                     Image(systemName: "chevron.right")
                         .foregroundStyle(Color("Primary"))
@@ -155,8 +162,8 @@ struct SearchContentBusinessView:View {
 //    NavigationView {
 //        SearchView().environmentObject(BusinessViewModel())
 //    }
-    NavigationView {
-        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
-    }
-//    SearchContentBusinessView()
+//    NavigationView {
+//        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+//    }
+    SearchContentBusinessView(businessPopular: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
 }

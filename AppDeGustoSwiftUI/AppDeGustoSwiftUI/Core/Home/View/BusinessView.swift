@@ -108,12 +108,15 @@ struct DescriptionView: View {
                 Spacer()
                 VStack {
                     Text("Categorización").foregroundStyle(.gray).font(.system(size: 15))
-                    CardCategorizationDish(nroCategorization: business.businessCategorization)
+                    CardCategorizationDish(sizeHeight: 25, nroCategorization: business.businessCategorization).padding(5)
                 }
                 Spacer()
                 VStack {
-                    Text("Distancia").foregroundStyle(.gray).font(.system(size: 15))
+                    Text("Distancia").foregroundStyle(.gray)
+                        .font(.system(size: 15))
+                        .padding(.bottom,20)
                     CardDistanceLocation(businessDistance: business.businessDistance,size: 14)
+                        .offset(y: -10)
                 }
             }
             .padding(8)
