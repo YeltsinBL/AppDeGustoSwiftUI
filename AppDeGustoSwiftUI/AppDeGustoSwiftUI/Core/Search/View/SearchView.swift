@@ -97,35 +97,7 @@ struct SearchContentIconBusinessView: View {
     let textFormatter = TextFormatter()
     var body: some View {
         VStack {
-            if(businessPopular.businessLogo.hasPrefix("https")){
-                AsyncImage(
-                    url: URL(string: "\(textFormatter.urlFormatter(businessPopular.businessLogo,2))"),
-                    transaction: Transaction(animation: .easeInOut),
-                    content: { phase in
-                        switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .transition(.scale(scale: 0.1, anchor: .center))
-                            case .failure:
-                                Image(systemName: "wifi.slash")
-                            @unknown default:
-                                EmptyView()
-                        }
-                })
-                .frame(width: 50, height: 200 * (50/210))
-                .aspectRatio(contentMode: .fit)
-                .clipShape(Circle())
-//                .padding()
-            } else {
-                Image("plato1")
-                    .resizable()
-                    .transition(.scale(scale: 0.1, anchor: .center))
-                    .frame(width: 50, height: 200 * (50/210))
-                    .clipShape(Circle())
-            }
+            CardImageView(nameImage: businessPopular.businessLogo, formatterShape: Circle(), valueWidth: 50)
             Text(businessPopular.businessName)
                 .font(.footnote)
                 .frame(width: 70)
@@ -138,11 +110,7 @@ struct SearchContentBusinessView:View {
     var body: some View {
         VStack {
             HStack {
-                Image("plato1")
-                    .resizable()
-                    .transition(.scale(scale: 0.1, anchor: .center))
-                    .frame(width: 50, height: 200 * (50/210))
-                    .clipShape(Circle())
+                CardImageView(nameImage: "plato1", formatterShape: Circle(), valueWidth: 50)
                 VStack(alignment: .leading) {
                     Text("La Granja 21").bold()
                     HStack {
@@ -166,11 +134,7 @@ struct SearchContentBusinessView:View {
                     ForEach(0..<3) { _ in
                         NavigationLink(destination: {}) {
                             VStack(alignment:.leading) {
-                                Image("plato1")
-                                    .resizable()
-                                    .transition(.scale(scale: 0.1, anchor: .center))
-                                    .frame(width: 118, height: 200 * (118/210))
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                CardImageView(nameImage: "plato1", formatterShape: RoundedRectangle(cornerRadius: 20), valueWidth: 118)
                                 Text("Nombre").font(.subheadline)
                                 Text("S/ \(20.5, specifier: "%.2f")")
                                     .font(.subheadline)
