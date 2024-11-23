@@ -20,7 +20,7 @@ struct Business: Identifiable, Decodable {
     let businessAverageRating: Float?
     let businessTotalReviews: Int
     let businessDistance: String
-    
+    let dishes: [Dish]?
     var id : Int {
         return businessId
     }

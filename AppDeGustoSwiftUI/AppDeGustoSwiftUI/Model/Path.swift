@@ -25,6 +25,7 @@ enum URLPath {
     case dishByBusiness
     case business
     case businessPopular
+    case businesSearch
     
     // Propiedad calculada para obtener la URL completa dependiendo del caso
     var url: String {
@@ -54,6 +55,8 @@ enum URLPath {
             return "\(baseURL)business"
         case .businessPopular:
             return "\(URLPath.business.url)/popular"
+        case .businesSearch:
+            return "\(URLPath.business.url)/search"
         }
     }
 }

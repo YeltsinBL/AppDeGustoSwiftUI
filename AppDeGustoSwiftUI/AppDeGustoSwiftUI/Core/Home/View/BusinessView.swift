@@ -87,7 +87,7 @@ struct BusinessView: View {
 }
 
 #Preview {
-    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
+    BusinessView(business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ", dishes: nil)).environmentObject(CartManager())
 }
 
 struct DescriptionView: View {
@@ -147,14 +147,7 @@ struct DescriptionView: View {
                     }
                 }
                 else {
-                    VStack(spacing: 2) {
-                        Image(systemName: "cart.badge.minus").padding(.horizontal)
-                            .frame(width:42, height: 42)
-                        Text("Aun no se han registrado platos para este restaurante")
-                            .lineLimit(5)
-                            .multilineTextAlignment(.center)
-                            .lineSpacing(8)
-                    }.padding().foregroundStyle(.black).bold()
+                    CardNoDishView()
                 }
             }
         }

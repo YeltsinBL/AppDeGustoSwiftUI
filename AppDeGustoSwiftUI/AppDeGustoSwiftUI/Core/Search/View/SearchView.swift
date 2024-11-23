@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SearchView: View {
     @EnvironmentObject var viewModelBusiness: BusinessViewModel
-    @StateObject var cartManager = CartManager()
+    @EnvironmentObject var cartManager: CartManager
+    @StateObject var searchViewModel = SearchViewModel()
     @State var search: String = ""
     let textFormatter = TextFormatter()
 
@@ -20,6 +21,7 @@ struct SearchView: View {
             VStack {
                 ToolbarSearchView(search: $search)
                     .environmentObject(cartManager)
+                    .environmentObject(searchViewModel)
                     .padding(.horizontal)
                 ScrollView {
                     if (search.count > 2) {
@@ -39,7 +41,7 @@ struct SearchView: View {
                         }.padding(.leading)
                         Divider().padding(.horizontal)
                         VStack {
-                            ForEach(viewModelBusiness.businessPopular, id: \.id) { businessPopular in
+                            ForEach(searchViewModel.businessSearch, id: \.id) { businessPopular in
                                 SearchContentBusinessView(businessPopular: businessPopular).environmentObject(cartManager)
                             }
                         }
@@ -64,6 +66,9 @@ struct ToolbarSearchView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cartManager: CartManager
     @Binding var search: String
+    @EnvironmentObject var viewModel: SearchViewModel
+    @FocusState private var isSearchFieldFocused: Bool // Estado para gestionar el foco
+        
     var body: some View {
         HStack {
             Button(action: {
@@ -76,6 +81,13 @@ struct ToolbarSearchView: View {
                 HStack {
                     Image("Search")
                     TextField("Buscar...", text: $search)
+                        .focused($isSearchFieldFocused) // Vincula el foco al estado
+                        .onSubmit {
+                            Task {
+                                await viewModel.searchBusiness( search)
+                            }
+                        }
+                        .submitLabel(.search)
                 }
             }
             .padding(8)
@@ -88,6 +100,12 @@ struct ToolbarSearchView: View {
             , label: {
                 CartButton(numberOfDishes: cartManager.dishes.count)
             })
+        }
+        .onAppear {
+            // Activa el foco al mostrar la vista
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                isSearchFieldFocused = true
+            }
         }
     }
 }
@@ -109,6 +127,7 @@ struct SearchContentIconBusinessView: View {
 struct SearchContentBusinessView:View {
     @EnvironmentObject var cartManager:CartManager
     let businessPopular: Business
+    let textFormatter = TextFormatter()
     var body: some View {
         VStack {
             HStack {
@@ -135,23 +154,31 @@ struct SearchContentBusinessView:View {
 //                        .background(.white)
 //                        .clipShape(Circle())
                 }
-            }.padding(.bottom)
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(0..<3) { _ in
-                        NavigationLink(destination: {}) {
-                            VStack(alignment:.leading) {
-                                CardImageView(nameImage: "plato1", formatterShape: RoundedRectangle(cornerRadius: 20), valueWidth: 118)
-                                Text("Nombre").font(.subheadline)
-                                Text("S/ \(20.5, specifier: "%.2f")")
+            }//.padding(.bottom)
+            
+            if let dishes = businessPopular.dishes, !dishes.isEmpty {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(dishes, id: \.id) { dish in
+                            NavigationLink(destination: {}) {
+                                VStack(alignment:.leading) {
+                                    CardImageView(nameImage: dish.dishPhoto, formatterShape: RoundedRectangle(cornerRadius: 20), valueWidth: 118)
+                                    Text(dish.dishName)
+                                        .font(.subheadline)
+                                        .frame(width:118, alignment: .leading)
+                                        .lineLimit(1)
+                                    Text(textFormatter.priceFormatter(Float(dish.dishPrice)))
                                     .font(.subheadline)
                                     .fontWeight(.bold)
+                                }
                             }
                         }
-                    }
+                    }.padding(.vertical)
                 }
+            }else {
+                CardNoDishView()
             }
-            Divider().padding(.vertical)
+            Divider()//.padding(.vertical)
             Spacer()
         }
         .padding(.horizontal)
@@ -162,8 +189,8 @@ struct SearchContentBusinessView:View {
 //    NavigationView {
 //        SearchView().environmentObject(BusinessViewModel())
 //    }
-//    NavigationView {
-//        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
-//    }
-    SearchContentBusinessView(businessPopular: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
+    NavigationView {
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+    }
+//    SearchContentBusinessView(businessPopular: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ")).environmentObject(CartManager())
 }
