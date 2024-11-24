@@ -17,26 +17,24 @@ struct CartView: View {
             Color("Bg")
                 .ignoresSafeArea(edges: .all)
             ScrollView {
-                        if cartManager.dishes.count > 0 {
-                            ForEach($cartManager.dishes, id:\.id) { $dish in
-                                CardProductRow(dish: dish, valor: $dish.quantity).environmentObject(cartManager)
-                                Divider()
-                                    .background(.gray.opacity(0.2))
-                            }
-                            Button(action: {
-                                showingBottonSheet.toggle()
-                            }, label: {
-                                Text("Vaciar carrito")
-                                    .foregroundStyle(.red)
-                                    .font(.footnote)
+                if cartManager.dishes.count > 0 {
+                    VStack {
+                        ForEach($cartManager.dishes, id:\.id) { $dish in
+                            CardProductRow(dish: dish, valor: $dish.quantity)
+                                .environmentObject(cartManager)
+                            Divider()
+                                .background(.gray.opacity(0.2))
+                        }
+                        Button(action: {
+                            showingBottonSheet.toggle()
+                        }, label: {
+                            Text("Vaciar carrito")
+                                .foregroundStyle(.red)
+                                .font(.footnote)
                             }).padding(.vertical)
-                            HStack {
-                                
-                                Text("Tu total a pagar es")
-                                Spacer()
-                                Text("\(cartManager.totalPrice, specifier: "%.2f")")
-                            }.padding()
-                        }else {
+                        CartTotalPriceView(totalPrice: cartManager.totalPrice).environmentObject(cartManager)
+                    }
+                }else {
                             VStack(alignment: .center) {
                                 Image(systemName: "cart")
                                     .padding(.all, 8)
@@ -66,6 +64,40 @@ struct CartView: View {
         }
         .sheet(isPresented: $showingBottonSheet) {
             MessageSheetView(showSheet: $showingBottonSheet).environmentObject(cartManager).presentationDetents([.height(250)])
+        }
+    }
+}
+
+struct CartTotalPriceView:View {
+    let totalPrice: Double
+    @EnvironmentObject var cartManager:CartManager
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack {
+                VStack {
+                    Text("Total a pagar")
+                    Text("\(totalPrice, specifier: "%.2f")").bold().font(.title2)
+                }
+                NavigationLink(destination: {
+                   
+                }) {
+                    Text("Realizar reserva")
+                        .frame(width:160).padding().bold()
+                        .background(Color("Primary"))
+                        .foregroundStyle(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                }
+                
+            }
+            .padding(.horizontal)
+            .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom)
+            .mask(RoundedRectangle(cornerRadius: 26, style: .continuous))
+            .shadow(color: .black.opacity(0.15), radius: 8, x: 2, y: 6)
+            .overlay(
+                RoundedRectangle(cornerRadius: 26, style: .continuous)
+                    .stroke(.linearGradient(colors: [.white.opacity(0.5),.white.opacity(0)], startPoint: .topLeading, endPoint: .bottomTrailing))
+            )
         }
     }
 }
