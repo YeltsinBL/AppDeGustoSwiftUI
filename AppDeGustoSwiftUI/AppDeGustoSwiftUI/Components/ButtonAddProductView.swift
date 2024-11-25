@@ -16,6 +16,7 @@ struct ButtonAddProduct: View {
     @State var isProductRow = false
     @State var icon:String = "minus"
     var dish:Dish?
+    @State var business: Business?
     var body: some View {
         HStack {
             
@@ -41,7 +42,7 @@ struct ButtonAddProduct: View {
                     icon = "minus"
                 }
                 if isProductRow {
-                    cartManager.add(dish!, 0)
+                    cartManager.add(dish!,business, 0)
                 }
             }
         }.bold()
@@ -61,5 +62,5 @@ struct ButtonAddProduct: View {
 #Preview {
     @State var number : Int? = 1
     ButtonAddProduct(
-        valor: $number).environmentObject(CartManager())
+        valor: $number, business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ", dishes: nil)).environmentObject(CartManager())
 }

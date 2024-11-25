@@ -50,7 +50,7 @@ struct SideMenuView: View {
                         }
                         else if row == .checkHistory {
                             NavigationLink(destination: {
-                                SearchView()
+                                //SearchView()
                             }) {
                                 SideMenuRowView(sideMenuRowType: row, selectedOption: $selectedOption)
                             }

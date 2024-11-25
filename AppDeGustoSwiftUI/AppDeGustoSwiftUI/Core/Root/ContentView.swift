@@ -20,6 +20,7 @@ struct ContentView: View {
                 if viewModel.userSession != nil {
                     NavigationView {
                         HomeView()
+                            .environmentObject(viewModel)
                     }
                 }else {
                     LoginView()

@@ -35,6 +35,7 @@
 		3B69A6112CAF832A005525E3 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6102CAF832A005525E3 /* Business.swift */; };
 		3B69A6132CAFC1E1005525E3 /* CardBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */; };
 		3B755BBC2CC5E39000E5217C /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B755BBB2CC5E38F00E5217C /* SideBarView.swift */; };
+		3B7996492CF406C200D6183B /* Reservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7996482CF406C200D6183B /* Reservations.swift */; };
 		3B7CB0CC2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */; };
 		3B7CB0CE2CA2696F0052280B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CD2CA2696F0052280B /* ContentView.swift */; };
 		3B7CB0D02CA269710052280B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CB0CF2CA269710052280B /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		3BACA2332CAE57B8009F9316 /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2322CAE57B8009F9316 /* DishViewModel.swift */; };
 		3BACA2352CAE57CA009F9316 /* DishCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2342CAE57CA009F9316 /* DishCategory.swift */; };
 		3BACA2372CAE5C91009F9316 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACA2362CAE5C91009F9316 /* Path.swift */; };
+		3BCE13F02CF316C1007C8361 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE13EF2CF316C1007C8361 /* ReservationView.swift */; };
 		3BD441742CD542B700EC9E82 /* ImageButtonBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,7 @@
 		3B69A6102CAF832A005525E3 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		3B69A6122CAFC1E1005525E3 /* CardBusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBusinessView.swift; sourceTree = "<group>"; };
 		3B755BBB2CC5E38F00E5217C /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		3B7996482CF406C200D6183B /* Reservations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservations.swift; sourceTree = "<group>"; };
 		3B7CB0C82CA2696F0052280B /* AppDeGustoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDeGustoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7CB0CB2CA2696F0052280B /* AppDeGustoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeGustoSwiftUIApp.swift; sourceTree = "<group>"; };
 		3B7CB0CD2CA2696F0052280B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 		3BACA2322CAE57B8009F9316 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
 		3BACA2342CAE57CA009F9316 /* DishCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCategory.swift; sourceTree = "<group>"; };
 		3BACA2362CAE5C91009F9316 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		3BCE13EF2CF316C1007C8361 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		3BD441732CD542B700EC9E82 /* ImageButtonBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonBackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +228,7 @@
 				3B69A6102CAF832A005525E3 /* Business.swift */,
 				3BA5D5002CB79E620067190B /* TextFormatter.swift */,
 				3BA466152CC7404700992E00 /* SideMenuRowType.swift */,
+				3B7996482CF406C200D6183B /* Reservations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				3B07BA3C2CAB1A7100B67327 /* UserView.swift */,
 				3BA5D4FE2CB7799F0067190B /* AddOnsView.swift */,
 				3B33B23A2CB8586C002487B8 /* CartView.swift */,
+				3BCE13EF2CF316C1007C8361 /* ReservationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,8 +476,10 @@
 				3B07BA3D2CAB1A7100B67327 /* UserView.swift in Sources */,
 				3BD441742CD542B700EC9E82 /* ImageButtonBackView.swift in Sources */,
 				3B33B23D2CB898A1002487B8 /* CardProductRow.swift in Sources */,
+				3BCE13F02CF316C1007C8361 /* ReservationView.swift in Sources */,
 				3BA903E42CB3CDA500DC10D9 /* CardRating.swift in Sources */,
 				3B69A6132CAFC1E1005525E3 /* CardBusinessView.swift in Sources */,
+				3B7996492CF406C200D6183B /* Reservations.swift in Sources */,
 				3BACA22F2CAE21F3009F9316 /* APIError.swift in Sources */,
 				3B69A6112CAF832A005525E3 /* Business.swift in Sources */,
 				3BACA2262CADA06D009F9316 /* TabViewDesign.swift in Sources */,

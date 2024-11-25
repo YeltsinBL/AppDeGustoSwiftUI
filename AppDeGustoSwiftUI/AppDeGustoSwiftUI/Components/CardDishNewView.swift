@@ -11,6 +11,7 @@ struct CardDishNewView: View {
     var dish:Dish
     let textFormatter = TextFormatter()
     @State var cant: Int? = 0
+    @State var business: Business?
     var body: some View {
         HStack{
             VStack{
@@ -35,7 +36,7 @@ struct CardDishNewView: View {
                 HStack {
                     Text(textFormatter.priceFormatter(Float(dish.dishPrice)))
                         .fontWeight(.bold)
-                    ButtonAddProduct(valor: $cant, espacio:10, espaciog: 0)
+                    ButtonAddProduct(valor: $cant, espacio:10, espaciog: 0, business: business)
                 }
                 
             }
@@ -47,5 +48,5 @@ struct CardDishNewView: View {
 }
 
 #Preview {
-    CardDishNewView(dish: Dish(dishId: 1, dishName: "Limonada", dishDescription: "Limonada casera refrescante", dishPrice: 20, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/vs/test/plato2.png"))
+    CardDishNewView(dish: Dish(dishId: 1, dishName: "Limonada", dishDescription: "Limonada casera refrescante", dishPrice: 20, dishPhoto: "https://res.cloudinary.com/dkd0jybv9/image/upload/vs/test/plato2.png"), business: Business(businessId: 1, businessName: "La Buena Mesa", businessAddress: "123 Gourmet Street", businessPhoneNumber: "123456789", businessStatus: 2, businessLogo: "https://res.cloudinary.com/dkd0jybv9/image/upload/v1728453775/test/El%20sombrero.png", businessLatitude: -8.069442, businessLongitude: -79.05701, businessCategorization: 3, businessAverageRating: 4.5, businessTotalReviews: 5, businessDistance: "541.14 m ", dishes: nil))
 }

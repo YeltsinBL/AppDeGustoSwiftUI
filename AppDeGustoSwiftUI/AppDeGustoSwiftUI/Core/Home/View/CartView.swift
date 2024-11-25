@@ -10,8 +10,10 @@ import SwiftUI
 struct CartView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var cartManager:CartManager
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State var titulo:String
     @State var showingBottonSheet = false
+    //@State var business: Business?
     var body: some View {
         ZStack {
             Color("Bg")
@@ -20,7 +22,7 @@ struct CartView: View {
                 if cartManager.dishes.count > 0 {
                     VStack {
                         ForEach($cartManager.dishes, id:\.id) { $dish in
-                            CardProductRow(dish: dish, valor: $dish.quantity)
+                            CardProductRow(dish: dish, valor: $dish.quantity, business: cartManager.business)
                                 .environmentObject(cartManager)
                             Divider()
                                 .background(.gray.opacity(0.2))
@@ -33,6 +35,7 @@ struct CartView: View {
                                 .font(.footnote)
                             }).padding(.vertical)
                         CartTotalPriceView(totalPrice: cartManager.totalPrice).environmentObject(cartManager)
+                            .environmentObject(authViewModel)
                     }
                 }else {
                             VStack(alignment: .center) {
@@ -71,6 +74,7 @@ struct CartView: View {
 struct CartTotalPriceView:View {
     let totalPrice: Double
     @EnvironmentObject var cartManager:CartManager
+    @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         VStack {
             Spacer()
@@ -80,9 +84,11 @@ struct CartTotalPriceView:View {
                     Text("\(totalPrice, specifier: "%.2f")").bold().font(.title2)
                 }
                 NavigationLink(destination: {
-                   
+                    ReservationView()
+                        .environmentObject(cartManager)
+                        .environmentObject(authViewModel)
                 }) {
-                    Text("Realizar reserva")
+                    Text("Visualizar reserva")
                         .frame(width:160).padding().bold()
                         .background(Color("Primary"))
                         .foregroundStyle(.white)
@@ -139,7 +145,7 @@ struct MessageSheetView:View {
 //    CartView(titulo: "Tu carrito")
 //        .environmentObject(CartManager())
     NavigationView {
-        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init()).environmentObject(AuthViewModel())
     }
 //    CartToolBar()
 }

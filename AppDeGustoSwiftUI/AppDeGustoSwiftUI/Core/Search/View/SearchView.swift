@@ -13,7 +13,8 @@ struct SearchView: View {
     @StateObject var searchViewModel = SearchViewModel()
     @State var search: String = ""
     let textFormatter = TextFormatter()
-
+    
+    //@State var business: Business?
     var body: some View {
         ZStack {
             Color("Bg")
@@ -68,7 +69,8 @@ struct ToolbarSearchView: View {
     @Binding var search: String
     @EnvironmentObject var viewModel: SearchViewModel
     @FocusState private var isSearchFieldFocused: Bool // Estado para gestionar el foco
-        
+    
+    //@State var business: Business?
     var body: some View {
         HStack {
             Button(action: {

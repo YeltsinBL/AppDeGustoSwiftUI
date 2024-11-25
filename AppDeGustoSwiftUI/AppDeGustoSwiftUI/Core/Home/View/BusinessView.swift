@@ -137,7 +137,7 @@ struct DescriptionView: View {
                 if(!dish.isEmpty) {
                     LazyVGrid(columns: [GridItem(), GridItem()]) {
                         ForEach(dish, id: \.id) { item in
-                            NavigationLink(destination: DishView(dish: item).environmentObject(cartManager)) {
+                            NavigationLink(destination: DishView(dish: item, business: business).environmentObject(cartManager)) {
                                 CardDishView(dish: item, size: 165)
                             }
                             .foregroundStyle(.black)

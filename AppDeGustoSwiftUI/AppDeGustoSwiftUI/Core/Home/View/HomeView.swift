@@ -12,6 +12,7 @@ struct HomeView: View {
     @StateObject var viewModelBusiness = BusinessViewModel()
     @StateObject var cartManager = CartManager()
     @State private var selectedIndex: Int = 4
+    @EnvironmentObject var authViewModel: AuthViewModel
 //    @State private var categoryDishId:Int = 1
     private let categories = ["Pastas", "Criolla", "Asiatica", "Postres", "Pizzas"]
     // Side Menu Bar View
@@ -25,6 +26,7 @@ struct HomeView: View {
                 VStack (alignment: .leading){
                     // Menu y Usuario
                     AppBarView(showMenu: $showMenu).environmentObject(cartManager)
+                        .environmentObject(authViewModel)
                     // Texto
                     TagLineView()
                         .padding()
@@ -102,13 +104,14 @@ struct HomeView: View {
 
 #Preview {
     NavigationView {
-        HomeView(viewModelDish: .init(), viewModelBusiness: .init())
+        HomeView(viewModelDish: .init(), viewModelBusiness: .init()).environmentObject(AuthViewModel())
     }
     
 }
 
 struct AppBarView: View {
     @EnvironmentObject var cartManager: CartManager
+    @EnvironmentObject var authViewModel: AuthViewModel
     @Binding var showMenu: Bool
     var body: some View {
         HStack {
@@ -121,6 +124,7 @@ struct AppBarView: View {
             Spacer()
             NavigationLink(destination:
                             CartView(titulo: "Tu carrito").environmentObject(cartManager)
+                .environmentObject(authViewModel)
             , label: {
                 CartButton(numberOfDishes: cartManager.dishes.count)
             })
